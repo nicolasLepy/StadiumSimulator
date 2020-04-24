@@ -11,4 +11,4 @@ This project aims to simulate the crowd population in a stadium using multi-agen
 
 ### Environment
 
-![Image description]("Images/stadium.png")
+![Image description](Images/stadium.png)
