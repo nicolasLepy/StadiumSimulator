@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.MultiAgentSystem
 {
-    public class Brain : MonoBehaviour
+    public class Brain
     {
         private List<Agent> agents;
     }
