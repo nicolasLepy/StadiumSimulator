@@ -9,22 +9,22 @@ namespace MultiAgentSystem
     {
 
         #region SingletonManagement
-        private static Environment instance = null;
+        private static Environment _instance = null;
         private Environment() {
-            brain = new Brain();
+            _brain = new Brain();
         }
         public static Environment GetInstance()
         {
-            if (instance == null)
-                instance = new Environment();
+            if (_instance == null)
+                _instance = new Environment();
 
-            return instance;
+            return _instance;
         }
         #endregion
 
-        private Brain brain;
+        private Brain _brain;
 
-        public Brain Brain { get => brain; }
+        public Brain Brain { get => _brain; }
 
     }
 

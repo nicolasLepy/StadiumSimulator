@@ -11,7 +11,7 @@ namespace MultiAgentSystem
             get => Environment.GetInstance();
         }
 
-        private List<Event> events;
+        private List<Event> _events;
 
         private void SendMessage(Agent receiver, Message message)
         {

@@ -6,7 +6,12 @@ namespace MultiAgentSystem
 {
     public class Brain
     {
-        private List<Agent> agents;
+        private List<Agent> _agents;
+
+        public Brain()
+        {
+            _agents = new List<Agent>();
+        }
 
         public void AddMessage(Agent sender, Agent receiver, Message message)
         {
