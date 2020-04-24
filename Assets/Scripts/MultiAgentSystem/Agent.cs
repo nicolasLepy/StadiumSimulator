@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.MultiAgentSystem
+namespace MultiAgentSystem
 {
     public class Agent { 
 
+        private Environment GetEnvironment
+        {
+            get => Environment.GetInstance();
+        }
+
         private List<Event> events;
 
-        private void sendMessage(Agent destinaire)
+        private void SendMessage(Agent receiver, Message message)
         {
-
+            GetEnvironment.Brain.AddMessage(this, receiver, message);
         }
     }
 

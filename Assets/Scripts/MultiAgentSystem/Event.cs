@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.MultiAgentSystem
+namespace MultiAgentSystem
 {
     public interface Event
     {

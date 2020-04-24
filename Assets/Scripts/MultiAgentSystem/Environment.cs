@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.MultiAgentSystem
+namespace MultiAgentSystem
 {
 
     public class Environment
     {
 
         #region SingletonManagement
-        private Environment instance = null;
-        private Environment() { }
-        public Environment getInstance()
+        private static Environment instance = null;
+        private Environment() {
+            brain = new Brain();
+        }
+        public static Environment GetInstance()
         {
             if (instance == null)
                 instance = new Environment();
@@ -21,6 +23,8 @@ namespace Assets.Scripts.MultiAgentSystem
         #endregion
 
         private Brain brain;
+
+        public Brain Brain { get => brain; }
 
     }
 
