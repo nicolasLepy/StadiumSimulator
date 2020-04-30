@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace MultiAgentSystem
 {
+    /// <summary>
+    /// Represents a ticket office
+    /// </summary>
     public class AgentTicketOffice : Agent
     {
-        public AgentTicketOffice()
+        /// <summary>
+        /// Create a ticket office agent
+        /// </summary>
+        /// <param name="nom">Name of the agent</param>
+        public AgentTicketOffice(string nom) : base(nom)
         {
         }
     }
