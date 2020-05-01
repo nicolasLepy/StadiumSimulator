@@ -14,9 +14,15 @@ namespace MultiAgentSystem
         /// <summary>
         /// Create a ticket office agent
         /// </summary>
-        /// <param name="nom">Name of the agent</param>
-        public AgentTicketOffice(string nom) : base(nom)
+        /// <param name="name">Name of the agent</param>
+        public AgentTicketOffice(string name) : base(name)
         {
         }
+
+        public override void CreateBody()
+        {
+            CreateBody("TicketOfficeBody");
+        }
+
     }
 }

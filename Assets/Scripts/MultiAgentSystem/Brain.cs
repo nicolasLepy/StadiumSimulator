@@ -28,6 +28,7 @@ namespace MultiAgentSystem
         {
             _agents = new List<Agent>();
             _messages = new List<Message>();
+            SpawnAgent<AgentSpectator>();
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace MultiAgentSystem
         {
             foreach(Message m in _messages)
             {
-                Debug.Log("message traité de " + m.Sender.Nom + " vers " + m.Receiver + " (" + m.Type.ToString() + ")");
+                Debug.Log("message traité de " + m.Sender.Name + " vers " + m.Receiver + " (" + m.Type.ToString() + ")");
             }
             _messages.Clear();
         }
@@ -57,11 +58,11 @@ namespace MultiAgentSystem
         /// Spawn an agent in the scene
         /// </summary>
         /// <param name="agent">The agent to create</param>
-        public void SpawnAgent(Agent agent)
+        public Agent SpawnAgent<T>() where T : Agent, new()
         {
-            GameObject visibleAgent = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            
-        
+            T newAgent = new T();
+            _agents.Add(newAgent);
+            return newAgent;
         }
     }
 
