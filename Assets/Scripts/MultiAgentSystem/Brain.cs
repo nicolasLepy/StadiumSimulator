@@ -28,7 +28,8 @@ namespace MultiAgentSystem
         {
             _agents = new List<Agent>();
             _messages = new List<Message>();
-            SpawnAgent<AgentSpectator>();
+            SpawnAgent<AgentSpectator>(new Vector3(0,5,10));
+            SpawnAgent<AgentTicketOffice>(new Vector3(0, 5, 0));
         }
 
         /// <summary>
@@ -58,10 +59,11 @@ namespace MultiAgentSystem
         /// Spawn an agent in the scene
         /// </summary>
         /// <param name="agent">The agent to create</param>
-        public Agent SpawnAgent<T>() where T : Agent, new()
+        public Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
         {
             T newAgent = new T();
             _agents.Add(newAgent);
+            newAgent.Body.transform.position = position;
             return newAgent;
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace MultiAgentSystem
 {
@@ -17,6 +18,19 @@ namespace MultiAgentSystem
         /// <param name="name">Name of the agent</param>
         public AgentTicketOffice(string name) : base(name)
         {
+        }
+
+        public override Vector3 Position
+        {
+            get
+            {
+                return _body.transform.Find("Counter").position;
+            }
+        }
+
+        public AgentTicketOffice() : this("Agent")
+        {
+
         }
 
         public override void CreateBody()

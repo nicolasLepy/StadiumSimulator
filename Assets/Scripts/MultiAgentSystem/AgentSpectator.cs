@@ -12,12 +12,22 @@ namespace MultiAgentSystem
     /// </summary>
     public class AgentSpectator : Agent
     {
+
+        public override Vector3 Position
+        {
+            get
+            {
+                return _body.transform.position;
+            }
+        }
+
         /// <summary>
         /// Create an agent spectator
         /// </summary>
         /// <param name="name">Name of the agent</param>
         public AgentSpectator(string name) : base(name)
         {
+            
         }
 
         public AgentSpectator() : this("Agent") {

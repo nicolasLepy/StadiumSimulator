@@ -17,7 +17,7 @@ namespace MultiAgentSystem
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             Environment.GetInstance().Brain.Loop();
         }

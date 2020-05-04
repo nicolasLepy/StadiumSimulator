@@ -27,6 +27,10 @@ namespace MultiAgentSystem {
             get => Environment.GetInstance();
         }
 
+        /// <summary>
+        /// Get position of the agent body in the scene
+        /// </summary>
+        public abstract Vector3 Position { get; }
 
         private List<Event> _events;
 
@@ -60,10 +64,11 @@ namespace MultiAgentSystem {
         /// </summary>
         /// <param name="receiver">The targeted agent</param>
         /// <param name="message">Type of the message</param>
-        private void SendMessage(Agent receiver, MessageType message)
+        protected void SendMessage(Agent receiver, MessageType message)
         {
             GetEnvironment.Brain.AddMessage(this, receiver, message);
         }
+
 
     }
 
