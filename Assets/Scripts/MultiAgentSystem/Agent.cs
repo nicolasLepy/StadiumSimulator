@@ -14,11 +14,17 @@ namespace MultiAgentSystem {
         /// </summary>
         private string _name;
         protected GameObject _body;
-        
+
+        /// <summary>
+        /// Behaviour state machine of the agent
+        /// </summary>
+        protected StateMachine _stateMachine;
+
         public string Name { get => _name; set => _name = value; }
 
         public GameObject Body { get => _body; }
 
+        public StateMachine StateMachine { get => _stateMachine; }
         /// <summary>
         /// Get the multi-agents environment
         /// </summary>

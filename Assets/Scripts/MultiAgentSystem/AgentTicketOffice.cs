@@ -30,7 +30,7 @@ namespace MultiAgentSystem
 
         public AgentTicketOffice() : this("Agent")
         {
-
+            _stateMachine = new TicketOfficeStateMachine(this);
         }
 
         public override void CreateBody()

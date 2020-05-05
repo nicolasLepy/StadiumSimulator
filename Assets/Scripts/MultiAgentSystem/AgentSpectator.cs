@@ -27,7 +27,7 @@ namespace MultiAgentSystem
         /// <param name="name">Name of the agent</param>
         public AgentSpectator(string name) : base(name)
         {
-            
+            _stateMachine = new SpectatorStateMachine(this);
         }
 
         public AgentSpectator() : this("Agent") {

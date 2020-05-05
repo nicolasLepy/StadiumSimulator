@@ -53,6 +53,11 @@ namespace MultiAgentSystem
                 Debug.Log("message traité de " + m.Sender.Name + " vers " + m.Receiver + " (" + m.Type.ToString() + ")");
             }
             _messages.Clear();
+
+            foreach(Agent a in _agents)
+            {
+                a.StateMachine.Action();
+            }
         }
 
         /// <summary>
