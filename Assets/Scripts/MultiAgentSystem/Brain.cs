@@ -12,25 +12,28 @@ namespace MultiAgentSystem
     public class Brain
     {
 
-        
-
         /// <summary>
         /// Agents of the multiagent system
         /// </summary>
-        private List<Agent> _agents;
-        public List<Agent> Agents { get => _agents; }
+        private List<KeyValuePair<AgentIdentifier, Agent>> _agents;
+
+        public List<KeyValuePair<AgentIdentifier, Agent>> Agents => _agents;
+
         /// <summary>
         /// "Mail box" for all agents who wants send a message to other agents
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
         /// </summary>
         private List<Message> _messages;
 
+        private int _currentIdentifier;
+
         /// <summary>
         /// Initialize the multi-agent brain
         /// </summary>
         public Brain()
         {
-            _agents = new List<Agent>();
+            _currentIdentifier = 0;
+            _agents = new List<KeyValuePair<AgentIdentifier, Agent>>();
             _messages = new List<Message>();
             for(int i = 0; i < 400; i++)
             {
@@ -59,24 +62,32 @@ namespace MultiAgentSystem
         {
             foreach(Message m in _messages)
             {
-                Debug.Log("message traité de " + m.Sender.Name + " vers " + m.Receiver + " (" + m.Type.ToString() + ")");
+                Debug.Log("message treated from " + m.Sender.Name + " to " + m.Receiver + " (" + m.Type.ToString() + ")");
             }
             _messages.Clear();
 
-            foreach(Agent a in _agents)
+            foreach(KeyValuePair<AgentIdentifier,Agent> a in _agents)
             {
-                a.StateMachine.Action();
+                a.Value.StateMachine.Action();
             }
+        }
+
+        private AgentIdentifier GenerateIdentifier()
+        {
+            AgentIdentifier res = new AgentIdentifier(_currentIdentifier++);
+            return res;
         }
 
         /// <summary>
         /// Spawn an agent in the scene
         /// </summary>
-        /// <param name="agent">The agent to create</param>
-        public Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
+        /// <param name="position">Spawn position</param>
+        private Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
         {
+            AgentIdentifier identifier = GenerateIdentifier();
             T newAgent = new T();
-            _agents.Add(newAgent);
+            KeyValuePair<AgentIdentifier,Agent> agent = new KeyValuePair<AgentIdentifier, Agent>(identifier,newAgent);
+            _agents.Add(agent);
             newAgent.Body.transform.position = position;
             return newAgent;
         }

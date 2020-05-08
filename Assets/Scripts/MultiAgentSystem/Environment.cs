@@ -28,7 +28,7 @@ namespace MultiAgentSystem
         #endregion
 
         /// <summary>
-        /// Multiagent system
+        /// Multi-agent system
         /// </summary>
         private Brain _brain;
 

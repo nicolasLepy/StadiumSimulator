@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
 
 namespace MultiAgentSystem
@@ -13,19 +14,13 @@ namespace MultiAgentSystem
     public class AgentSpectator : Agent
     {
 
-        public override Vector3 Position
-        {
-            get
-            {
-                return _body.transform.position;
-            }
-        }
+        public override Vector3 Position => _body.transform.position;
 
         /// <summary>
         /// Create an agent spectator
         /// </summary>
         /// <param name="name">Name of the agent</param>
-        public AgentSpectator(string name) : base(name)
+        private AgentSpectator(string name) : base(name)
         {
             _stateMachine = new SpectatorStateMachine(this);
         }
@@ -46,11 +41,11 @@ namespace MultiAgentSystem
         public AgentTicketOffice ClosestTicketOffice()
         {
             AgentTicketOffice res = null;
-            foreach(Agent a in Environment.GetInstance().Brain.Agents)
+            foreach(KeyValuePair<AgentIdentifier,Agent> a in Environment.GetInstance().Brain.Agents)
             {
-                if(a as AgentTicketOffice != null)
+                if(a.Value as AgentTicketOffice != null)
                 {
-                    res = a as AgentTicketOffice;
+                    res = a.Value as AgentTicketOffice;
                 }
             }
             return res;

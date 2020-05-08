@@ -16,17 +16,11 @@ namespace MultiAgentSystem
         /// Create a ticket office agent
         /// </summary>
         /// <param name="name">Name of the agent</param>
-        public AgentTicketOffice(string name) : base(name)
+        private AgentTicketOffice(string name) : base(name)
         {
         }
 
-        public override Vector3 Position
-        {
-            get
-            {
-                return _body.transform.Find("Counter").position;
-            }
-        }
+        public override Vector3 Position => _body.transform.Find("Counter").position;
 
         public AgentTicketOffice() : this("Agent")
         {
