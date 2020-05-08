@@ -53,6 +53,24 @@ namespace MultiAgentSystem {
 
         private List<Event> _events;
 
+
+        private List<Message> _mailbox;
+
+        /// <summary>
+        /// Mailbox of an agent
+        /// </summary>
+        public List<Message> mailbox => _mailbox;
+
+        /// <summary>
+        /// Add a message to an agent
+        /// </summary>
+        /// <param name="message"></param>
+        public void AddMessage(Message message)
+        {
+            _mailbox.Add(message);
+            Debug.Log(_agentId + "(" + _name + ") recevied message from " + message.Sender.AgentId + "(" + message.Sender.Name + ")");
+        }
+        
         /// <summary>
         /// Create an agent
         /// </summary>

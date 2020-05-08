@@ -63,7 +63,7 @@ namespace MultiAgentSystem
         {
             foreach(Message m in _messages)
             {
-                Debug.Log("message treated from " + m.Sender.Name + " to " + m.Receiver + " (" + m.Type.ToString() + ")");
+                m.Receiver.AddMessage(m);
             }
             _messages.Clear();
 
