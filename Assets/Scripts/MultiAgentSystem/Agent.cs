@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace MultiAgentSystem {
     public abstract class Agent : ISimulationClock
     {
 
+        private Guid _agentId;
+
+        public Guid AgentId => _agentId;
 
         private float _spawnTime;
         /// <summary>
@@ -57,6 +61,7 @@ namespace MultiAgentSystem {
         {
             _spawnTime = Time.time;
             _name = name;
+            _agentId = Guid.NewGuid();
             CreateBody();
         }
 

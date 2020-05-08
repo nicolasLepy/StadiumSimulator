@@ -41,12 +41,9 @@ namespace MultiAgentSystem
         public AgentTicketOffice ClosestTicketOffice()
         {
             AgentTicketOffice res = null;
-            foreach(KeyValuePair<AgentIdentifier,Agent> a in Environment.GetInstance().Brain.Agents)
+            foreach (var a in Environment.GetInstance().Brain.Agents.Where(a => a.Value is AgentTicketOffice))
             {
-                if(a.Value as AgentTicketOffice != null)
-                {
-                    res = a.Value as AgentTicketOffice;
-                }
+                res = a.Value as AgentTicketOffice;
             }
             return res;
         }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.MultiAgentSystem;
+﻿using System;
+using Assets.Scripts.MultiAgentSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,9 @@ namespace MultiAgentSystem
         /// <summary>
         /// Agents of the multiagent system
         /// </summary>
-        private List<KeyValuePair<AgentIdentifier, Agent>> _agents;
+        private List<KeyValuePair<Guid, Agent>> _agents;
 
-        public List<KeyValuePair<AgentIdentifier, Agent>> Agents => _agents;
+        public List<KeyValuePair<Guid, Agent>> Agents => _agents;
 
         /// <summary>
         /// "Mail box" for all agents who wants send a message to other agents
@@ -33,7 +34,7 @@ namespace MultiAgentSystem
         public Brain()
         {
             _currentIdentifier = 0;
-            _agents = new List<KeyValuePair<AgentIdentifier, Agent>>();
+            _agents = new List<KeyValuePair<Guid, Agent>>();
             _messages = new List<Message>();
             for(int i = 0; i < 400; i++)
             {
@@ -66,16 +67,10 @@ namespace MultiAgentSystem
             }
             _messages.Clear();
 
-            foreach(KeyValuePair<AgentIdentifier,Agent> a in _agents)
+            foreach(KeyValuePair<Guid,Agent> a in _agents)
             {
                 a.Value.StateMachine.Action();
             }
-        }
-
-        private AgentIdentifier GenerateIdentifier()
-        {
-            AgentIdentifier res = new AgentIdentifier(_currentIdentifier++);
-            return res;
         }
 
         /// <summary>
@@ -84,9 +79,8 @@ namespace MultiAgentSystem
         /// <param name="position">Spawn position</param>
         private Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
         {
-            AgentIdentifier identifier = GenerateIdentifier();
             T newAgent = new T();
-            KeyValuePair<AgentIdentifier,Agent> agent = new KeyValuePair<AgentIdentifier, Agent>(identifier,newAgent);
+            KeyValuePair<Guid,Agent> agent = new KeyValuePair<Guid, Agent>(newAgent.AgentId,newAgent);
             _agents.Add(agent);
             newAgent.Body.transform.position = position;
             return newAgent;
