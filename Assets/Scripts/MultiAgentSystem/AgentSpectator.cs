@@ -38,5 +38,22 @@ namespace MultiAgentSystem
         {
             CreateBody("SpectatorBody");
         }
+
+        /// <summary>
+        /// Temp : il faut gérer le champ de vision de l'agent
+        /// </summary>
+        /// <returns></returns>
+        public AgentTicketOffice ClosestTicketOffice()
+        {
+            AgentTicketOffice res = null;
+            foreach(Agent a in Environment.GetInstance().Brain.Agents)
+            {
+                if(a as AgentTicketOffice != null)
+                {
+                    res = a as AgentTicketOffice;
+                }
+            }
+            return res;
+        }
     }
 }

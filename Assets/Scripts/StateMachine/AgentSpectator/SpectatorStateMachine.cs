@@ -12,8 +12,7 @@ namespace MultiAgentSystem
 
         public SpectatorStateMachine(AgentSpectator agent) : base(agent)
         {
-
+            _current = new StateGoToTicketOffice(this);
         }
-        
     }
 }

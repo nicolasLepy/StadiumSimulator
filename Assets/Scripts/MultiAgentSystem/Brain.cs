@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.MultiAgentSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,13 @@ namespace MultiAgentSystem
     public class Brain
     {
 
+        
+
         /// <summary>
         /// Agents of the multiagent system
         /// </summary>
         private List<Agent> _agents;
+        public List<Agent> Agents { get => _agents; }
         /// <summary>
         /// "Mail box" for all agents who wants send a message to other agents
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
@@ -28,7 +32,12 @@ namespace MultiAgentSystem
         {
             _agents = new List<Agent>();
             _messages = new List<Message>();
-            SpawnAgent<AgentSpectator>(new Vector3(0,5,10));
+            for(int i = 0; i < 400; i++)
+            {
+                int x = UnityEngine.Random.Range(-100, 100);
+                int z = UnityEngine.Random.Range(-100, 100);
+                SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+            }
             SpawnAgent<AgentTicketOffice>(new Vector3(0, 5, 0));
         }
 

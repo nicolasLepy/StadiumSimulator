@@ -9,9 +9,11 @@ namespace MultiAgentSystem
     public abstract class StateMachine
     {
 
-        private State _current;
+        protected State _current;
 
         private Agent _agent;
+
+        public Agent Agent { get => _agent; }
 
         public StateMachine(Agent agent)
         {
