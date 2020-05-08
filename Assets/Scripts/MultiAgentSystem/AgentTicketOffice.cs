@@ -27,7 +27,7 @@ namespace MultiAgentSystem
             _stateMachine = new TicketOfficeStateMachine(this);
         }
 
-        public override void CreateBody()
+        protected override void CreateBody()
         {
             CreateBody("TicketOfficeBody");
         }

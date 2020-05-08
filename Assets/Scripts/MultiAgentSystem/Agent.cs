@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
 
 namespace MultiAgentSystem { 
@@ -7,8 +8,16 @@ namespace MultiAgentSystem {
     /// <summary>
     /// Represents an agent
     /// </summary>
-    public abstract class Agent {
+    public abstract class Agent : ISimulationClock
+    {
 
+
+        private float _spawnTime;
+        /// <summary>
+        /// Time when an agent is spawned
+        /// </summary>
+        public float SpawnTime => _spawnTime;
+        
         /// <summary>
         /// Name of the agent
         /// </summary>
@@ -46,6 +55,7 @@ namespace MultiAgentSystem {
         /// <param name="name">Name of the agent</param>
         public Agent(string name)
         {
+            _spawnTime = Time.time;
             _name = name;
             CreateBody();
         }
@@ -62,7 +72,7 @@ namespace MultiAgentSystem {
             _body.transform.name = _name + "Body";
         }
 
-        public abstract void CreateBody();
+        protected abstract void CreateBody();
 
 
         /// <summary>
@@ -76,6 +86,14 @@ namespace MultiAgentSystem {
         }
 
 
+        /// <summary>
+        /// Current simulation time of the agent
+        /// </summary>
+        /// <returns></returns>
+        public float GetSimulationTime()
+        {
+            return Time.time - _spawnTime;
+        }
     }
 
 }

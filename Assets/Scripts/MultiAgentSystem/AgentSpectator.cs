@@ -29,7 +29,7 @@ namespace MultiAgentSystem
             
         }
 
-        public override void CreateBody()
+        protected override void CreateBody()
         {
             CreateBody("SpectatorBody");
         }
