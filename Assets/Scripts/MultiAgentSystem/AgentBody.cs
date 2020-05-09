@@ -12,6 +12,8 @@ namespace MultiAgentSystem
 
         private GameObject _gameObject;
 
+        public GameObject GameObject;
+
         private void Start()
         {
             _gameObject = this.gameObject;
