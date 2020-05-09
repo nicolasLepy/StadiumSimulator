@@ -1,4 +1,7 @@
-﻿namespace MultiAgentSystem
+﻿using System;
+using UnityEngine;
+
+namespace MultiAgentSystem
 {
     public class StateTicketOfficeWaiting : State
     {
@@ -13,7 +16,12 @@
 
         public override State Next()
         {
-            return this;
+            State res = this;
+            AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
+            if (agent != null && agent.receivedAskForTicket)
+                res = new StateTicketOfficeGiveTicket(_stateMachine);
+            
+            return res;
         }
     }
 }

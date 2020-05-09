@@ -25,13 +25,32 @@ namespace MultiAgentSystem
             _stateMachine = new SpectatorStateMachine(this);
         }
 
-        public AgentSpectator() : this("Agent") {
+        public AgentSpectator() : this("AgentSpectator_") {
             
+        }
+
+        public override void ReadMailbox()
+        {
+            foreach (Message m in _mailbox)
+            {
+                Debug.Log(this + " received " + m.Type + " from " + m.Sender);
+            }
+
+            _mailbox.Clear();
         }
 
         protected override void CreateBody()
         {
-            CreateBody("SpectatorBody");
+            CreateBody<AgentSpectatorBody>("SpectatorBody");
+        }
+
+        public override void OnNext(Message value)
+        {
+            if (value.Receiver == this || value.Receiver == null)
+            {
+                _mailbox.Add(value);
+            }
+
         }
 
         /// <summary>

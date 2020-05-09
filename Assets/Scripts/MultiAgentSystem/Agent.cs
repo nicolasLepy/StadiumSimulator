@@ -9,8 +9,10 @@ namespace MultiAgentSystem {
     /// <summary>
     /// Represents an agent
     /// </summary>
-    public abstract class Agent : ISimulationClock
+    public abstract class Agent : ISimulationClock, IObserver<Message>
     {
+
+        private IDisposable unsubscriber;
 
         private Guid _agentId;
 
@@ -54,7 +56,7 @@ namespace MultiAgentSystem {
         private List<Event> _events;
 
 
-        private List<Message> _mailbox;
+        protected List<Message> _mailbox;
 
         /// <summary>
         /// Mailbox of an agent
@@ -77,6 +79,7 @@ namespace MultiAgentSystem {
         /// <param name="name">Name of the agent</param>
         public Agent(string name)
         {
+            _mailbox = new List<Message>();
             _spawnTime = Time.time;
             _name = name;
             _agentId = Guid.NewGuid();
@@ -88,25 +91,38 @@ namespace MultiAgentSystem {
         /// Create physical body of the agent
         /// </summary>
         /// <param name="prefabName">Name of the prefab located in the <b>Prefabs/</b> folder</param>
-        public void CreateBody(string prefabName)
+        public void CreateBody<T>(string prefabName) where T : AgentBody
         {
             _body = Resources.Load("Prefabs/" + prefabName, typeof(GameObject)) as GameObject;
             _body = GameObject.Instantiate(_body, new Vector3(0, 0, 0), _body.transform.rotation);
             _body.transform.name = _name + "Body";
+            _body.AddComponent<T>();
+            _body.GetComponent<T>().agent = this;
         }
 
         protected abstract void CreateBody();
-
+        
 
         /// <summary>
         /// Send a message to another agent
         /// </summary>
         /// <param name="receiver">The targeted agent</param>
         /// <param name="message">Type of the message</param>
-        protected void SendMessage(Agent receiver, MessageType message)
+        public void SendMessage(Agent receiver, MessageType message)
         {
-            GetEnvironment.Brain.AddMessage(this, receiver, message);
+            Message msg = new Message(this, receiver, message);
+            GetEnvironment.Brain.AddMessage(msg);
         }
+
+        public override string ToString()
+        {
+            return Name + "(" + _agentId + ")";
+        }
+
+        /// <summary>
+        /// Read and treat mails in mailbox
+        /// </summary>
+        public abstract void ReadMailbox();
 
 
         /// <summary>
@@ -117,6 +133,30 @@ namespace MultiAgentSystem {
         {
             return Time.time - _spawnTime;
         }
+
+        public virtual void Subscribe(IObservable<Message> provider)
+        {
+            if (provider != null)
+                unsubscriber = provider.Subscribe(this);
+        }
+
+        public virtual void Unsubscribe()
+        {
+            unsubscriber.Dispose();
+        }
+
+        public virtual void OnCompleted()
+        {
+            Debug.Log("The message tracker has completed transmitting data to " + _name);
+            Unsubscribe();
+        }
+
+        public virtual void OnError(Exception e)
+        {
+            Debug.Log(_name + "The message cannot be determined");
+        }
+
+        public abstract void OnNext(Message value);
     }
 
 }

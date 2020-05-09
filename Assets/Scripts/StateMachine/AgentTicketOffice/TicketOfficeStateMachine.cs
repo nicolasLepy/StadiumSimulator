@@ -11,7 +11,7 @@ namespace MultiAgentSystem
     {
         public TicketOfficeStateMachine(AgentTicketOffice agent) : base(agent)
         {
-
+            _current = new StateTicketOfficeWaiting(this);
         }
     }
 }
