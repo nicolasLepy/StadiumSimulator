@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spectator
   - TicketOffice
+  - Vision
   layers:
   - Default
   - TransparentFX

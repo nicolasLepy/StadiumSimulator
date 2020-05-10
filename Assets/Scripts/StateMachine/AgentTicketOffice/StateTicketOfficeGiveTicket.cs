@@ -17,7 +17,15 @@ namespace MultiAgentSystem
         {
             AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
             agent.receivedAskForTicket = false;
-            agent.SendMessage(agent.askForTicket.Sender, MessageType.GIVE_TICKET);
+            bool hasTicket = Environment.GetInstance().environmentTest.RequestSeat();
+            if (hasTicket)
+            {
+                agent.SendMessage(agent.askForTicket.Sender, MessageType.GIVE_TICKET);
+            }
+            else
+            {
+                agent.SendMessage(agent.askForTicket.Sender, MessageType.NO_TICKET_AVAIABLE);
+            }
             return new StateTicketOfficeWaiting(_stateMachine);
         }
     }

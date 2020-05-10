@@ -17,7 +17,7 @@ namespace MultiAgentSystem
 
         public Environment_Test()
         {
-
+            _availableSeats = 5;
         }
 
         /// <summary>
