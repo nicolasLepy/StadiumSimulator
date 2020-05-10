@@ -10,6 +10,7 @@ namespace MultiAgentSystem
     {
         public StateTicketOfficeWaiting(StateMachine stateMachine) : base(stateMachine)
         {
+            
         }
 
         public override void Action()

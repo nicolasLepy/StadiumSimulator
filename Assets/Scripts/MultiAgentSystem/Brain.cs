@@ -42,7 +42,11 @@ namespace MultiAgentSystem
                 int z = UnityEngine.Random.Range(-100, 100);
                 SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
             }
-            SpawnAgent<AgentTicketOffice>(new Vector3(0, 5, 0));
+
+            foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
+            {
+                SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
+            }
         }
 
         /// <summary>

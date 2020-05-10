@@ -7,6 +7,7 @@ TagManager:
   - Spectator
   - TicketOffice
   - Vision
+  - TicketOfficeSpawner
   layers:
   - Default
   - TransparentFX

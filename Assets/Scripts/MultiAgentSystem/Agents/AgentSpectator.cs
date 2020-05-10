@@ -82,9 +82,19 @@ namespace MultiAgentSystem
         public AgentTicketOffice ClosestTicketOffice()
         {
             AgentTicketOffice res = null;
-            foreach (var a in Environment.GetInstance().Brain.Agents.Where(a => a.Value is AgentTicketOffice))
+            float minDistance = -1;
+            foreach (KeyValuePair<Guid,Agent> agent in Environment.GetInstance().Brain.Agents)
             {
-                res = a.Value as AgentTicketOffice;
+                AgentTicketOffice ato = agent.Value as AgentTicketOffice;
+                if (ato != null)
+                {
+                    float distance = Vector3.Distance(ato.Position, this.Position);
+                    if (minDistance > distance || minDistance == -1)
+                    {
+                        res = ato;
+                        minDistance = distance;
+                    }
+                }
             }
             return res;
         }
