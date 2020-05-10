@@ -13,12 +13,25 @@ namespace MultiAgentSystem
     /// </summary>
     public class AgentTicketOffice : Agent
     {
+        
+        public Message askForTicket { get; set; }
+        public bool receivedAskForTicket { get; set; }
+
+        /// <summary>
+        /// The queue in front of the ticket office
+        /// </summary>
+        private Queue _queue;
+
+        public Queue queue => _queue;
+
+        
         /// <summary>
         /// Create a ticket office agent
         /// </summary>
         /// <param name="name">Name of the agent</param>
         private AgentTicketOffice(string name) : base(name)
         {
+            _queue = new Queue(this);
         }
 
         public override Vector3 Position => _body.transform.Find("Counter").position;
@@ -33,10 +46,17 @@ namespace MultiAgentSystem
             foreach (Message m in _mailbox)
             {
                 Debug.Log(this + " received " + m.Type + " from " + m.Sender);
-                if (m.Type == MessageType.ASK_FOR_TICKET)
+                switch (m.Type.messageObject())
                 {
-                    askForTicket = m;
-                    receivedAskForTicket = true;
+                    case MessageObject.ASK_FOR_TICKET:
+                        askForTicket = m;
+                        receivedAskForTicket = true;
+                        break;
+                    case MessageObject.ASK_FOR_QUEUE:
+                        _queue.Add(m.Sender);
+                        MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(m.Sender));
+                        SendMessage(m.Sender, answer);
+                        break;
                 }
             }
             _mailbox.Clear();
@@ -47,17 +67,7 @@ namespace MultiAgentSystem
             CreateBody<AgentTicketOfficeBody>("TicketOfficeBody");
         }
 
-        public Message askForTicket { get; set; }
-        public bool receivedAskForTicket { get; set; }
-        
-        public override void OnNext(Message value)
-        {
-            if (value.Receiver == this || value.Receiver == null)
-            {
-                _mailbox.Add(value);
-            }
 
-        }
 
     }
 }

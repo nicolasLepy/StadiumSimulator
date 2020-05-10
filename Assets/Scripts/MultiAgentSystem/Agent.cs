@@ -156,7 +156,18 @@ namespace MultiAgentSystem {
             Debug.Log(_name + "The message cannot be determined");
         }
 
-        public abstract void OnNext(Message value);
+        /// <summary>
+        /// Receive a message from tracker
+        /// </summary>
+        /// <param name="value">The message</param>
+        public void OnNext(Message value)
+        {
+            if (value.Receiver == this || value.Receiver == null)
+            {
+                _mailbox.Add(value);
+            }
+
+        }
     }
 
 }

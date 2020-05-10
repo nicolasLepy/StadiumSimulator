@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 namespace MultiAgentSystem
 {
+    /// <summary>
+    /// A class to allow agent to unsubscribe to the tracker
+    /// </summary>
     public class Unsubscriber : IDisposable
     {
+        
         private List<IObserver<Message>> _observers;
         private IObserver<Message> _observer;
 

@@ -14,6 +14,14 @@ namespace MultiAgentSystem
     public class AgentSpectator : Agent
     {
 
+        /// <summary>
+        /// If has a ticket or not
+        /// </summary>
+        public bool ticket { get; set; }
+        public bool inQueue { get; set; }
+        public Vector3 queuePosition { get; set; }
+
+        
         public override Vector3 Position => _body.transform.position;
 
         /// <summary>
@@ -29,29 +37,43 @@ namespace MultiAgentSystem
             
         }
 
+        /// <summary>
+        /// Read mailbox of the agent
+        /// </summary>
         public override void ReadMailbox()
         {
             foreach (Message m in _mailbox)
             {
                 Debug.Log(this + " received " + m.Type + " from " + m.Sender);
+                switch (m.Type.messageObject())
+                {
+                    //Spectator get ticket office queue position
+                    case MessageObject.GET_QUEUE_POSITION:
+                        MessageSendQueuePosition msg = m.Type as MessageSendQueuePosition;
+                        inQueue = true;
+                        queuePosition = msg.position;
+                        break;
+                    //A ticket was given by the ticket office
+                    case MessageObject.GIVE_TICKET:
+                        ticket = true;
+                        break;
+                    //There is no available ticket anymore
+                    case MessageObject.NO_TICKET_AVAILABLE:
+                        //ticket is set to true only to make the agent move out the ticket office
+                        ticket = true;
+                        break;
+                }
             }
 
             _mailbox.Clear();
         }
 
+        
         protected override void CreateBody()
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
         }
-
-        public override void OnNext(Message value)
-        {
-            if (value.Receiver == this || value.Receiver == null)
-            {
-                _mailbox.Add(value);
-            }
-
-        }
+        
 
         /// <summary>
         /// Temp : il faut gérer le champ de vision de l'agent

@@ -2,31 +2,55 @@
 
 namespace MultiAgentSystem
 {
+    /// <summary>
+    /// An agent is front of the ticket office, the ticket office sell a ticket to an agent
+    /// </summary>
     public class StateTicketOfficeGiveTicket : State
     {
-        public StateTicketOfficeGiveTicket(StateMachine stateMachine) : base(stateMachine)
+        
+        private int time = 0;
+        private Agent _agent;
+        
+        public StateTicketOfficeGiveTicket(StateMachine stateMachine, Agent agent) : base(stateMachine)
         {
+            _agent = agent;
         }
 
         public override void Action()
         {
+            time++;
+            //This timer might be awfully ugly
+            if (time > 100)
+            {
+                AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
+                agent.receivedAskForTicket = false;
+                bool hasTicket = Environment.GetInstance().environmentTest.RequestSeat();
+                if (hasTicket)
+                {
+                    agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket());
+                    //agent.SendMessage(agent.askForTicket.Sender, new MessageGiveTicket());
+                }
+                else
+                {
+                    agent.SendMessage(agent.queue.Pop(), new MessageNoTicketAvailable());
+                    //agent.SendMessage(agent.askForTicket.Sender, new MessageNoTicketAvailable());
+                }
             
+                //Envoyer la nouvelle position à tout le monde
+                foreach (Agent a in agent.queue.agents)
+                {
+                    agent.SendMessage(a,new MessageSendQueuePosition(agent.queue.GetPositionForAgent(a)));
+                }
+            }
+
         }
 
         public override State Next()
         {
-            AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
-            agent.receivedAskForTicket = false;
-            bool hasTicket = Environment.GetInstance().environmentTest.RequestSeat();
-            if (hasTicket)
-            {
-                agent.SendMessage(agent.askForTicket.Sender, MessageType.GIVE_TICKET);
-            }
-            else
-            {
-                agent.SendMessage(agent.askForTicket.Sender, MessageType.NO_TICKET_AVAIABLE);
-            }
-            return new StateTicketOfficeWaiting(_stateMachine);
+            State res = this;
+            if (time > 100)
+                res = new StateTicketOfficeWaiting(_stateMachine);
+            return res;
         }
     }
 }
