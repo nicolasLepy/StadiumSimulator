@@ -40,7 +40,7 @@ namespace MultiAgentSystem
 
         public Brain Brain { get => _brain; }
 
-        public Environment_Test Environment_Test { get => _environment; }
+        public Environment_Test environmentTest => _environment;
 
     }
 

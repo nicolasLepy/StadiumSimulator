@@ -12,6 +12,7 @@ namespace MultiAgentSystem
     /// </summary>
     public class Brain
     {
+        private MessageTracker _provider;
 
         /// <summary>
         /// Agents of the multiagent system
@@ -25,35 +26,43 @@ namespace MultiAgentSystem
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
         /// </summary>
         private List<Message> _messages;
-
-        private int _currentIdentifier;
-
+        
         /// <summary>
         /// Initialize the multi-agent brain
         /// </summary>
         public Brain()
         {
-            _currentIdentifier = 0;
-            _agents = new List<KeyValuePair<Guid, Agent>>();
             _messages = new List<Message>();
-            for(int i = 0; i < 400; i++)
+            _agents = new List<KeyValuePair<Guid, Agent>>();
+            _provider = new MessageTracker();
+            
+            
+            foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("SpectatorSpawner"))
             {
-                int x = UnityEngine.Random.Range(-100, 100);
-                int z = UnityEngine.Random.Range(-100, 100);
-                SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                for(int i = 0; i < 20; i++)
+                {
+                    float x = UnityEngine.Random.Range(-60, 60) + ticketOfficeSpawner.transform.position.x;
+                    float z = UnityEngine.Random.Range(-60, 60) + ticketOfficeSpawner.transform.position.z;
+                    SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                }
             }
-            SpawnAgent<AgentTicketOffice>(new Vector3(0, 5, 0));
+
+            
+            foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
+            {
+                Agent ato = SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
+                ato.Body.gameObject.transform.rotation = ticketOfficeSpawner.transform.rotation;
+            }
         }
 
         /// <summary>
         /// Add a message in the "mail box"
         /// </summary>
-        /// <param name="sender">Agent who send the message</param>
-        /// <param name="receiver">Targeted agent for the message</param>
-        /// <param name="message">Type of the message</param>
-        public void AddMessage(Agent sender, Agent receiver, MessageType message)
+        /// <param name="message">Message to broadcast</param>
+        public void AddMessage(Message message)
         {
-            _messages.Add(new Message(sender, receiver, message));
+            _provider.TrackMessage(message);
+            //_messages.Add(message);
         }
 
         /// <summary>
@@ -61,11 +70,10 @@ namespace MultiAgentSystem
         /// </summary>
         public void Loop()
         {
-            foreach(Message m in _messages)
+            foreach (KeyValuePair<Guid, Agent> agent in _agents)
             {
-                m.Receiver.AddMessage(m);
+                agent.Value.ReadMailbox();
             }
-            _messages.Clear();
 
             foreach(KeyValuePair<Guid,Agent> a in _agents)
             {
@@ -82,6 +90,7 @@ namespace MultiAgentSystem
             T newAgent = new T();
             KeyValuePair<Guid,Agent> agent = new KeyValuePair<Guid, Agent>(newAgent.AgentId,newAgent);
             _agents.Add(agent);
+            _provider.Subscribe(newAgent);
             newAgent.Body.transform.position = position;
             return newAgent;
         }

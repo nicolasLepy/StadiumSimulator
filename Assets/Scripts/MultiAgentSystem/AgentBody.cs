@@ -11,18 +11,29 @@ namespace MultiAgentSystem
     {
 
         private GameObject _gameObject;
+        private Agent _agent;
+
+        public Agent agent
+        {
+            get => _agent;
+            set => _agent = value;
+        }
+
 
         public GameObject GameObject;
 
         private void Start()
         {
             _gameObject = this.gameObject;
+            
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             
         }
+
+        
 
     }
 }

@@ -25,7 +25,14 @@ namespace MultiAgentSystem
 
         public override State Next()
         {
-            return this;
+            State res = this;
+            AgentSpectator a = _stateMachine.Agent as AgentSpectator;
+            if (a.inQueue)
+            {
+                res = new StateSpectatorFollowQueue(_stateMachine);
+            }
+            a.inQueue = false;
+            return res;
         }
     }
 }
