@@ -37,6 +37,7 @@ namespace MultiAgentSystem
             _provider = new MessageTracker();
             
             
+            /*
             foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("SpectatorSpawner"))
             {
                 for(int i = 0; i < 20; i++)
@@ -45,7 +46,7 @@ namespace MultiAgentSystem
                     float z = UnityEngine.Random.Range(-60, 60) + ticketOfficeSpawner.transform.position.z;
                     SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
                 }
-            }
+            }*/
 
             
             foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
@@ -85,7 +86,7 @@ namespace MultiAgentSystem
         /// Spawn an agent in the scene
         /// </summary>
         /// <param name="position">Spawn position</param>
-        private Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
+        public Agent SpawnAgent<T>(Vector3 position) where T : Agent, new()
         {
             T newAgent = new T();
             KeyValuePair<Guid,Agent> agent = new KeyValuePair<Guid, Agent>(newAgent.AgentId,newAgent);
