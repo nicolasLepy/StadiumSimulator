@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
+    /// <summary>
+    /// The spectator follow a queue for something (ticket,...)
+    /// </summary>
     public class StateSpectatorFollowQueue : State
     {
         

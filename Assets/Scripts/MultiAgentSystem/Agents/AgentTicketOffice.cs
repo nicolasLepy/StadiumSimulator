@@ -40,6 +40,9 @@ namespace MultiAgentSystem
         {
         }
         
+        /// <summary>
+        /// Create the state machine managing behaviour of the agent mind
+        /// </summary>
         public override void CreateStateMachine()
         {
             _stateMachine = new TicketOfficeStateMachine(this);

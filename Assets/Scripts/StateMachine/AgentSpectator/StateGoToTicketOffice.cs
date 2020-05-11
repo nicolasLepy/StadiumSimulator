@@ -9,6 +9,10 @@ using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
+    
+    /// <summary>
+    /// The spectator is arrived in front of stadium : now he had to choose his ticket office
+    /// </summary>
     public class StateGoToTicketOffice : State
     {
         private AgentTicketOffice _target;

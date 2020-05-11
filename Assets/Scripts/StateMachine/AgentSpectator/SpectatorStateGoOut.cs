@@ -17,7 +17,8 @@ namespace MultiAgentSystem
 
         public override void Action()
         {
-            this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
+            this._stateMachine.Agent.Body.MoveToDestination(_destination);
+            //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
         }
 
         public override State Next()
