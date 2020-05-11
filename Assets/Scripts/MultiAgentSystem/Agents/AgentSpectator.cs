@@ -30,10 +30,14 @@ namespace MultiAgentSystem
         /// <param name="name">Name of the agent</param>
         private AgentSpectator(string name) : base(name)
         {
+        }
+
+        public override void CreateStateMachine()
+        {
             _stateMachine = new SpectatorStateMachine(this);
         }
 
-        public AgentSpectator() : this("AgentSpectator_") {
+        public AgentSpectator() : this("AgentSpectator") {
             
         }
 

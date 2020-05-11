@@ -37,7 +37,7 @@ namespace MultiAgentSystem {
 
         public string Name { get => _name; set => _name = value; }
 
-        public GameObject Body { get => _body; }
+        public AgentBody Body { get => _body.GetComponent<AgentBody>(); }
 
         public StateMachine StateMachine { get => _stateMachine; }
         /// <summary>
@@ -47,6 +47,8 @@ namespace MultiAgentSystem {
         {
             get => Environment.GetInstance();
         }
+
+        public abstract void CreateStateMachine();
 
         /// <summary>
         /// Get position of the agent body in the scene

@@ -9,6 +9,7 @@ TagManager:
   - Vision
   - TicketOfficeSpawner
   - SpectatorSpawner
+  - StadiumEntrance
   layers:
   - Default
   - TransparentFX

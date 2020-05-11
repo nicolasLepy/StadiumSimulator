@@ -1,11 +1,15 @@
 ﻿using System;
 using MultiAgentSystem;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
     public class AgentSpectatorBody : AgentBody
     {
+
+        
+        
         private void OnTriggerEnter(Collider other){
             if (other.tag == "TicketOffice")
             {

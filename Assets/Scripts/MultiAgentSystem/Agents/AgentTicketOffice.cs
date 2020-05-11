@@ -38,6 +38,10 @@ namespace MultiAgentSystem
 
         public AgentTicketOffice() : this("AgentTicketOffice")
         {
+        }
+        
+        public override void CreateStateMachine()
+        {
             _stateMachine = new TicketOfficeStateMachine(this);
         }
 

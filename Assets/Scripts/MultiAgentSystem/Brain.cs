@@ -93,6 +93,7 @@ namespace MultiAgentSystem
             _agents.Add(agent);
             _provider.Subscribe(newAgent);
             newAgent.Body.transform.position = position;
+            newAgent.CreateStateMachine();
             return newAgent;
         }
     }

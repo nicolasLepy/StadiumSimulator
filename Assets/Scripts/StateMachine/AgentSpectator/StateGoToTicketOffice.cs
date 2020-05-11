@@ -9,7 +9,6 @@ using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
-    [ObsoleteAttribute("This property is temporary, only for test. Will be replaced by real agent behaviour.", false)] 
     public class StateGoToTicketOffice : State
     {
 
