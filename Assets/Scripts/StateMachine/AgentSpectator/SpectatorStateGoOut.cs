@@ -12,7 +12,7 @@ namespace MultiAgentSystem
         
         public SpectatorStateGoOut(StateMachine stateMachine) : base(stateMachine)
         {
-            _destination = new Vector3(-50,0,-35);
+            _destination = new Vector3(109,3,-24);
         }
 
         public override void Action()

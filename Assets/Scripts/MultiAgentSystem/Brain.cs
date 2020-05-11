@@ -36,13 +36,18 @@ namespace MultiAgentSystem
             _agents = new List<KeyValuePair<Guid, Agent>>();
             _provider = new MessageTracker();
             
-            for(int i = 0; i < 30; i++)
+            
+            foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("SpectatorSpawner"))
             {
-                int x = UnityEngine.Random.Range(-100, 100);
-                int z = UnityEngine.Random.Range(-100, 100);
-                SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                for(int i = 0; i < 20; i++)
+                {
+                    float x = UnityEngine.Random.Range(-60, 60) + ticketOfficeSpawner.transform.position.x;
+                    float z = UnityEngine.Random.Range(-60, 60) + ticketOfficeSpawner.transform.position.z;
+                    SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                }
             }
 
+            
             foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
             {
                 Agent ato = SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
