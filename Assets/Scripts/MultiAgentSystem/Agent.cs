@@ -70,7 +70,7 @@ namespace MultiAgentSystem {
         public void AddMessage(Message message)
         {
             _mailbox.Add(message);
-            Debug.Log(_agentId + "(" + _name + ") recevied message from " + message.Sender.AgentId + "(" + message.Sender.Name + ")");
+            //Debug.Log(_agentId + "(" + _name + ") recevied message from " + message.Sender.AgentId + "(" + message.Sender.Name + ")");
         }
         
         /// <summary>

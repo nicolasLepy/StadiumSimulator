@@ -36,7 +36,7 @@ namespace MultiAgentSystem
             _agents = new List<KeyValuePair<Guid, Agent>>();
             _provider = new MessageTracker();
             
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 30; i++)
             {
                 int x = UnityEngine.Random.Range(-100, 100);
                 int z = UnityEngine.Random.Range(-100, 100);
@@ -45,7 +45,8 @@ namespace MultiAgentSystem
 
             foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
             {
-                SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
+                Agent ato = SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
+                ato.Body.gameObject.transform.rotation = ticketOfficeSpawner.transform.rotation;
             }
         }
 

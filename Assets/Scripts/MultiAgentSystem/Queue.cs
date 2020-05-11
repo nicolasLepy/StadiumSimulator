@@ -66,7 +66,9 @@ namespace MultiAgentSystem
             {
                 if (a == agent)
                 {
-                    position = position + new Vector3(0, 0, -idx * 1.5f);
+                    //position = _owner.Body.transform.position + _owner.Body.transform.forward + new Vector3(0, 0, -idx * 1.5f);
+                    position = _owner.Position + -idx * 1.5f * _owner.Body.transform.forward;
+                    //position = position + new Vector3(0, 0, -idx * 1.5f);
                 }
                 idx++;
             }

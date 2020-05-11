@@ -44,7 +44,7 @@ namespace MultiAgentSystem
         {
             foreach (Message m in _mailbox)
             {
-                Debug.Log(this + " received " + m.Type + " from " + m.Sender);
+               // Debug.Log(this + " received " + m.Type + " from " + m.Sender);
                 switch (m.Type.messageObject())
                 {
                     //Spectator get ticket office queue position

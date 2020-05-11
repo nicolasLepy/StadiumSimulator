@@ -65,6 +65,7 @@ namespace MultiAgentSystem
         protected override void CreateBody()
         {
             CreateBody<AgentTicketOfficeBody>("TicketOfficeBody");
+            
         }
 
 
