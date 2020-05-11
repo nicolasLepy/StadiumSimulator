@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = System.Object;
 
 namespace MultiAgentSystem
 {
@@ -33,7 +34,23 @@ namespace MultiAgentSystem
         {
             GetComponent<NavMeshAgent>().destination = destination;
         }
-        
+
+
+        public List<GameObject> ListCloseTicketOffice(float maxRadius)
+        {
+            List<GameObject> res = new List<GameObject>();
+
+            foreach (GameObject g in GameObject.FindGameObjectsWithTag("TicketOffice"))
+            {
+                float distance = Vector3.Distance(g.transform.position, _agent.Position);
+                if (distance < maxRadius)
+                {
+                    res.Add(g);
+                }
+            }
+            
+            return res;
+        }
         public GameObject GetClosestTicketOffice(float rayon)
         {
             GameObject res = null;

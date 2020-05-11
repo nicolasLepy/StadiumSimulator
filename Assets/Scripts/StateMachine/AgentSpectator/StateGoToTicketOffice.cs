@@ -11,15 +11,34 @@ namespace MultiAgentSystem
 {
     public class StateGoToTicketOffice : State
     {
-
+        private AgentTicketOffice _target;
         public StateGoToTicketOffice(StateMachine stateMachine) : base(stateMachine)
         {
-            
+            List<GameObject> ticketOffices = _stateMachine.Agent.Body.ListCloseTicketOffice(50);
+            AgentTicketOffice selectedTicketOffice = null;
+            int minAgents = -1;
+            foreach (GameObject go in ticketOffices)
+            {
+                AgentTicketOffice ato = go.GetComponent<AgentBody>().agent as AgentTicketOffice;
+                if (ato != null)
+                {
+                    int agents = ato.queue.agents.Count;
+                    if (agents < minAgents || minAgents == -1)
+                    {
+                        selectedTicketOffice = ato;
+                        minAgents = agents;
+                    }
+                }
+            }
+
+            _target = selectedTicketOffice;
         }
         public override void Action()
         {
-            UnityEngine.Vector3 ato = (_stateMachine.Agent as AgentSpectator).ClosestTicketOffice().Position;
-            this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = ato;
+            //UnityEngine.Vector3 ato = (_stateMachine.Agent as AgentSpectator).ClosestTicketOffice().Position;
+            //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = ato;
+            this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _target.Position;
+
         }
 
         public override State Next()

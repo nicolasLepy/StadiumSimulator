@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 7320577244915461099}
   m_Layer: 0
   m_Name: Counter
-  m_TagString: TicketOffice
+  m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
