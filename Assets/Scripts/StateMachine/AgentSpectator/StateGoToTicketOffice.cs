@@ -36,6 +36,7 @@ namespace MultiAgentSystem
             }
 
             _target = selectedTicketOffice;
+            _stateMachine.Agent.SendMessage(_target, new MessageAskForQueue());
         }
         public override void Action()
         {

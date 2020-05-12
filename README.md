@@ -4,10 +4,21 @@ This project aims to simulate the crowd population in a stadium using multi-agen
 
 ## To do
 - Environment
-- Spectator entrance
-- Half time
-- End of the game
+	- Stadium model
+	- Tickets management
+
+- Agents
+	- Stadium entrance
+		- Agent in groups
+		- Chose right door
+		- Sit
+	- Half-time
+		- ?
+	- End of the ame
+		- ?
+
 - Interface
+- Data extraction
 
 ### Environment
 
