@@ -12,6 +12,7 @@ public class SpectatorSpawner : MonoBehaviour
     [SerializeField] private int _agentGroupMin;
     [SerializeField] private int _agentGroupMax;
     [SerializeField] private int _spawiningDurationInSec;
+    [SerializeField] private int _ticketPercentage;
     
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,11 @@ public class SpectatorSpawner : MonoBehaviour
                 {
                     float x = UnityEngine.Random.Range(-30, 30) + transform.position.x;
                     float z = UnityEngine.Random.Range(-30, 30) + transform.position.z;
-                    Environment.GetInstance().Brain.SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                    AgentSpectator spawnedAgent  = (AgentSpectator) Environment.GetInstance().Brain.SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                    if (UnityEngine.Random.Range(1, 100) <= _ticketPercentage)
+                    {
+                        spawnedAgent.ticket = true;
+                    }
                 }
             }
             yield return new WaitForSeconds(1f);

@@ -32,11 +32,14 @@ namespace MultiAgentSystem
         public override State Next()
         {
             State res = this;
+            var agent = _stateMachine.Agent as AgentSpectator;
             //Quand suffisament près d'une billeterrie, check les billeteriers autour pour choisir la plus proche
+            if (agent == null || agent.ticket) return new SpectatorStateGoOut(_stateMachine);
             if (_stateMachine.Agent.Body.GetClosestTicketOfficeDistance() < 50)
             {
                 res = new StateGoToTicketOffice(_stateMachine);
             }
+
             return res;
         }
     }
