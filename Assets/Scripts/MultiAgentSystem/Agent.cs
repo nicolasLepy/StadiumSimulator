@@ -57,6 +57,9 @@ namespace MultiAgentSystem {
 
         private List<Event> _events;
 
+        protected List<Message> _archivedMailbox;
+
+        public List<Message> archivedMailbox => _archivedMailbox;
 
         protected List<Message> _mailbox;
 
@@ -82,6 +85,7 @@ namespace MultiAgentSystem {
         public Agent(string name)
         {
             _mailbox = new List<Message>();
+            _archivedMailbox = new List<Message>();
             _spawnTime = Time.time;
             _name = name;
             _agentId = Guid.NewGuid();
@@ -100,6 +104,7 @@ namespace MultiAgentSystem {
             _body.transform.name = _name + "Body";
             _body.AddComponent<T>();
             _body.GetComponent<T>().agent = this;
+            _body.AddComponent<AgentUI>();
         }
 
         protected abstract void CreateBody();
@@ -126,6 +131,11 @@ namespace MultiAgentSystem {
         /// </summary>
         public abstract void ReadMailbox();
 
+        protected void ClearMailbox()
+        {
+            _archivedMailbox.AddRange(_mailbox);
+            _mailbox.Clear();
+        }
 
         /// <summary>
         /// Current simulation time of the agent

@@ -66,7 +66,8 @@ namespace MultiAgentSystem
                         break;
                 }
             }
-            _mailbox.Clear();
+            
+            ClearMailbox();
         }
 
         protected override void CreateBody()

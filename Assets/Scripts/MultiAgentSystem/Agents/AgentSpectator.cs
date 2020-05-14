@@ -36,8 +36,9 @@ namespace MultiAgentSystem
         {
             _stateMachine = new SpectatorStateMachine(this);
         }
-
-        public AgentSpectator() : this("AgentSpectator") {
+        
+        private static int nameCounter = 0;
+        public AgentSpectator() : this("AgentSpectator_" + ++nameCounter) {
             
         }
 
@@ -69,7 +70,7 @@ namespace MultiAgentSystem
                 }
             }
 
-            _mailbox.Clear();
+            ClearMailbox();
         }
 
         

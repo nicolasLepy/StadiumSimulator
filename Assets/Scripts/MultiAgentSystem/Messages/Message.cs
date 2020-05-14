@@ -36,6 +36,11 @@ namespace MultiAgentSystem
             _receiver = receiver;
             _type = type;
         }
+
+        public override string ToString()
+        {
+            return "To : " + _receiver.Name + ". Subject : " + _type.ToString();
+        }
     }
 
     /// <summary>

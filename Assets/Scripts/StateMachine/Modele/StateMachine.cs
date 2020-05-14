@@ -28,5 +28,10 @@ namespace MultiAgentSystem
                 _current = _current.Next();
             }
         }
+
+        public override string ToString()
+        {
+            return _current.ToString();
+        }
     }
 }
