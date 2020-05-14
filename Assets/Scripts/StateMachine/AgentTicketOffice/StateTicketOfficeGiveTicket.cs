@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MultiAgentSystem
 {
@@ -34,7 +35,9 @@ namespace MultiAgentSystem
                 }
                 else
                 {
-                    agent.SendMessage(agent.queue.Pop(), new MessageNoTicketAvailable());
+                    List<int> availableCategories =
+                        Environment.GetInstance().environmentTest.StillAvailableCategories();
+                    agent.SendMessage(agent.queue.Pop(), new MessageNoTicketAvailable(availableCategories));
                     //agent.SendMessage(agent.askForTicket.Sender, new MessageNoTicketAvailable());
                 }
             

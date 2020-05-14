@@ -21,6 +21,7 @@ namespace MultiAgentSystem
         
         private Dictionary<int, int> _seatsByDoor;
         
+        
         public Stadium()
         {
             _seatsByDoor = new Dictionary<int, int>();
@@ -28,6 +29,16 @@ namespace MultiAgentSystem
             {
                 _seatsByDoor.Add(i, 10);
             }
+        }
+
+        public List<int> StillAvailableCategories()
+        {
+            List<int> res= new List<int>();
+            foreach (KeyValuePair<int, int> kvp in _seatsByDoor)
+            {
+                if (kvp.Value > 0) res.Add(kvp.Key);
+            }
+            return res;
         }
 
         /// <summary>

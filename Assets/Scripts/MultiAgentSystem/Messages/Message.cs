@@ -95,6 +95,16 @@ namespace MultiAgentSystem
     
     public class MessageNoTicketAvailable : MessageType
     {
+        private List<int> _stillAvailableCategories;
+
+        public List<int> stillAvailableCategories => _stillAvailableCategories;
+
+        public MessageNoTicketAvailable(List<int> stillAvailableCategories)
+        {
+
+            _stillAvailableCategories = stillAvailableCategories;
+        }
+
         public MessageObject messageObject()
         {
             return MessageObject.NO_TICKET_AVAILABLE;

@@ -39,6 +39,8 @@ namespace MultiAgentSystem
             }
             if(agent.ticket != null)
                 res = new SpectatorStateGoOut(_stateMachine);
+            if (agent.ticketRefused != null)
+                res = new SpectatorStateGoOut(_stateMachine);
             return res;
         }
     }
