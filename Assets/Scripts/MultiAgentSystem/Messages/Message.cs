@@ -72,6 +72,13 @@ namespace MultiAgentSystem
     
     public class MessageGiveTicket : MessageType
     {
+        private Ticket _ticket;
+        public Ticket ticket => _ticket;
+
+        public MessageGiveTicket(Ticket ticket)
+        {
+            _ticket = ticket;
+        }
         public MessageObject messageObject()
         {
             return MessageObject.GIVE_TICKET;

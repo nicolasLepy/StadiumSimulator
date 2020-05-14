@@ -23,7 +23,7 @@ namespace MultiAgentSystem
         {
             AgentSpectator agent = _stateMachine.Agent as AgentSpectator;
             State res = this;
-            if(agent.ticket)
+            if(agent.ticket != null)
                 res = new SpectatorStateGoOut(_stateMachine);
             return res;
         }

@@ -17,7 +17,7 @@ namespace MultiAgentSystem
         /// <summary>
         /// If has a ticket or not
         /// </summary>
-        public bool ticket { get; set; }
+        public Ticket ticket { get; set; }
         public bool inQueue { get; set; }
         public Vector3 queuePosition { get; set; }
 
@@ -60,12 +60,13 @@ namespace MultiAgentSystem
                         break;
                     //A ticket was given by the ticket office
                     case MessageObject.GIVE_TICKET:
-                        ticket = true;
+                        MessageGiveTicket mgt = m.Type as MessageGiveTicket;
+                        ticket = mgt.ticket;
                         break;
                     //There is no available ticket anymore
                     case MessageObject.NO_TICKET_AVAILABLE:
                         //ticket is set to true only to make the agent move out the ticket office
-                        ticket = true;
+                        ticket = new Ticket(1); //Set no ticket behaviour
                         break;
                 }
             }

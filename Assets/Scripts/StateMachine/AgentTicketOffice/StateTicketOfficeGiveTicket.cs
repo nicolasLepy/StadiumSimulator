@@ -24,10 +24,10 @@ namespace MultiAgentSystem
             {
                 AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
                 agent.receivedAskForTicket = false;
-                bool hasTicket = Environment.GetInstance().environmentTest.RequestSeat();
-                if (hasTicket)
+                Ticket ticket = Environment.GetInstance().environmentTest.RequestSeat(2);
+                if (ticket != null)
                 {
-                    agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket());
+                    agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket(ticket));
                     //agent.SendMessage(agent.askForTicket.Sender, new MessageGiveTicket());
                 }
                 else
