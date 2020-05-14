@@ -51,7 +51,7 @@ namespace MultiAgentSystem
             AgentSpectator a = _stateMachine.Agent as AgentSpectator;
             if (a.inQueue)
             {
-                res = new StateSpectatorFollowQueue(_stateMachine);
+                res = new StateSpectatorFollowQueue(_stateMachine, _target);
             }
             a.inQueue = false;
             return res;

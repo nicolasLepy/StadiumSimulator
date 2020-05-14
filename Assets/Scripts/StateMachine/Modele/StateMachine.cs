@@ -10,6 +10,7 @@ namespace MultiAgentSystem
     {
 
         protected State _current;
+        public State current => _current;
 
         private Agent _agent;
 

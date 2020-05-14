@@ -72,6 +72,27 @@ namespace MultiAgentSystem
             }
 
             ClearMailbox();
+
+            if (_stateMachine.current is SpectatorChoseStadiumEntrance)
+            {
+                Material blue = Resources.Load("Materials/Blue", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is StateGoToTicketOffice)
+            {
+                Material blue = Resources.Load("Materials/Green", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is StateSpectatorFollowQueue)
+            {
+                Material blue = Resources.Load("Materials/Grey", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is SpectatorStateGoOut)
+            {
+                Material blue = Resources.Load("Materials/Red", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
         }
 
         

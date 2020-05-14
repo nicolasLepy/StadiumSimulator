@@ -7,12 +7,14 @@ namespace MultiAgentSystem
     /// </summary>
     public class StateTicketOfficeGiveTicket : State
     {
-        
+
+        private int _transaction_duration;
         private int time = 0;
         private Agent _agent;
         
         public StateTicketOfficeGiveTicket(StateMachine stateMachine, Agent agent) : base(stateMachine)
         {
+            _transaction_duration = 100;
             _agent = agent;
         }
 
@@ -20,11 +22,11 @@ namespace MultiAgentSystem
         {
             time++;
             //This timer might be awfully ugly
-            if (time > 100)
+            if (time > _transaction_duration)
             {
                 AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
+                Ticket ticket = Environment.GetInstance().environmentTest.RequestSeat((agent.askForTicket.Type as MessageAskForTicket).door);
                 agent.receivedAskForTicket = false;
-                Ticket ticket = Environment.GetInstance().environmentTest.RequestSeat(2);
                 if (ticket != null)
                 {
                     agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket(ticket));
@@ -48,7 +50,7 @@ namespace MultiAgentSystem
         public override State Next()
         {
             State res = this;
-            if (time > 100)
+            if (time > _transaction_duration)
                 res = new StateTicketOfficeWaiting(_stateMachine);
             return res;
         }

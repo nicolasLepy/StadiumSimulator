@@ -22,14 +22,19 @@ namespace MultiAgentSystem
         {
             State res = this;
             AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
-            Agent firstAgentInQueue = agent.queue.First();
+            if (agent.receivedAskForTicket)
+            {
+                Agent firstAgentInQueue = agent.queue.First();
+                res = new StateTicketOfficeGiveTicket(_stateMachine,firstAgentInQueue);
+            }
+            /*Agent firstAgentInQueue = agent.queue.First();
             if (firstAgentInQueue != null)
             {
                 if (Vector3.Distance(firstAgentInQueue.Position, agent.Position) < 1.7f)
                 {
                     res = new StateTicketOfficeGiveTicket(_stateMachine, firstAgentInQueue);
                 }
-            }
+            }*/
             /*if (agent != null && agent.receivedAskForTicket)
                 res = new StateTicketOfficeGiveTicket(_stateMachine);*/
             

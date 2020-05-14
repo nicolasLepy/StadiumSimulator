@@ -64,6 +64,14 @@ namespace MultiAgentSystem
 
     public class MessageAskForTicket : MessageType
     {
+        private int _door;
+        public int door => _door;
+
+        public MessageAskForTicket(int door)
+        {
+            _door = door;
+        }
+        
         public MessageObject messageObject()
         {
             return MessageObject.ASK_FOR_TICKET;
