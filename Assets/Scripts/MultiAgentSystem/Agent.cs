@@ -54,9 +54,7 @@ namespace MultiAgentSystem {
         /// Get position of the agent body in the scene
         /// </summary>
         public abstract Vector3 Position { get; }
-
-        private List<Event> _events;
-
+        
         protected List<Message> _archivedMailbox;
 
         public List<Message> archivedMailbox => _archivedMailbox;
