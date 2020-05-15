@@ -14,6 +14,9 @@ This project aims to simulate the crowd population in a stadium using multi-agen
 		- Ask to ticket office for other category if no ticket
 		- Quit stadium if no ticket
 		- Sit
+		- Gauss random
+		- Random on the queues
+		- Home / Away spectators, with dedicated zones
 	- Half-time
 		- ?
 	- End of the ame

@@ -28,6 +28,8 @@ namespace MultiAgentSystem {
         /// Name of the agent
         /// </summary>
         private string _name;
+        public string Name => _name;
+
         protected GameObject _body;
 
         /// <summary>
@@ -35,7 +37,6 @@ namespace MultiAgentSystem {
         /// </summary>
         protected StateMachine _stateMachine;
 
-        public string Name { get => _name; set => _name = value; }
 
         public AgentBody Body { get => _body.GetComponent<AgentBody>(); }
 
