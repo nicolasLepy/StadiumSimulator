@@ -43,61 +43,7 @@ namespace MultiAgentSystem
             
         }
 
-        /// <summary>
-        /// Read mailbox of the agent
-        /// </summary>
-        public override void ReadMailbox()
-        {
-            foreach (Message m in _mailbox)
-            {
-                Debug.Log(this + " received " + m.Type + " from " + m.Sender);
-                switch (m.Type.messageObject())
-                {
-                    //Spectator get ticket office queue position
-                    case MessageObject.GET_QUEUE_POSITION:
-                        MessageSendQueuePosition msg = m.Type as MessageSendQueuePosition;
-                        inQueue = true;
-                        queuePosition = msg.position;
-                        break;
-                    //A ticket was given by the ticket office
-                    case MessageObject.GIVE_TICKET:
-                        MessageGiveTicket mgt = m.Type as MessageGiveTicket;
-                        ticket = mgt.ticket;
-                        break;
-                    //There is no available ticket anymore
-                    case MessageObject.NO_TICKET_AVAILABLE:
-                        //ticket is set to true only to make the agent move out the ticket office
-                        ticket = null;
-                        ticketRefused = (m.Type as MessageNoTicketAvailable);
-                        break;
-                }
-            }
 
-            ClearMailbox();
-
-            if (_stateMachine.current is SpectatorChoseStadiumEntrance)
-            {
-                Material blue = Resources.Load("Materials/Blue", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is StateGoToTicketOffice)
-            {
-                Material blue = Resources.Load("Materials/Green", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is StateSpectatorFollowQueue)
-            {
-                Material blue = Resources.Load("Materials/Grey", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is SpectatorStateGoOut)
-            {
-                Material blue = Resources.Load("Materials/Red", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-        }
-
-        
         protected override void CreateBody()
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
@@ -126,6 +72,54 @@ namespace MultiAgentSystem
                 }
             }
             return res;
+        }
+
+        public override void ProcessMessage(Message message)
+        {
+            Debug.Log(this + " received " + message.Type + " from " + message.Sender);
+            switch (message.Type.messageObject())
+            {
+                //Spectator get ticket office queue position
+                case MessageObject.GET_QUEUE_POSITION:
+                    MessageSendQueuePosition msg = message.Type as MessageSendQueuePosition;
+                    inQueue = true;
+                    queuePosition = msg.position;
+                    break;
+                //A ticket was given by the ticket office
+                case MessageObject.GIVE_TICKET:
+                    MessageGiveTicket mgt = message.Type as MessageGiveTicket;
+                    ticket = mgt.ticket;
+                    break;
+                //There is no available ticket anymore
+                case MessageObject.NO_TICKET_AVAILABLE:
+                    //ticket is set to true only to make the agent move out the ticket office
+                    ticket = null;
+                    ticketRefused = (message.Type as MessageNoTicketAvailable);
+                    break;
+            }
+            
+            archivedMailbox.Add(message);
+            
+            if (_stateMachine.current is SpectatorChoseStadiumEntrance)
+            {
+                Material blue = Resources.Load("Materials/Blue", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is StateGoToTicketOffice)
+            {
+                Material blue = Resources.Load("Materials/Green", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is StateSpectatorFollowQueue)
+            {
+                Material blue = Resources.Load("Materials/Grey", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
+            if (_stateMachine.current is SpectatorStateGoOut)
+            {
+                Material blue = Resources.Load("Materials/Red", typeof(Material)) as Material;
+                _body.gameObject.GetComponent<Renderer>().material = blue;
+            }
         }
     }
 }

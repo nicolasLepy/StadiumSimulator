@@ -60,30 +60,14 @@ namespace MultiAgentSystem {
 
         public List<Message> archivedMailbox => _archivedMailbox;
 
-        protected List<Message> _mailbox;
 
-        /// <summary>
-        /// Mailbox of an agent
-        /// </summary>
-        public List<Message> mailbox => _mailbox;
 
-        /// <summary>
-        /// Add a message to an agent
-        /// </summary>
-        /// <param name="message"></param>
-        public void AddMessage(Message message)
-        {
-            _mailbox.Add(message);
-            //Debug.Log(_agentId + "(" + _name + ") recevied message from " + message.Sender.AgentId + "(" + message.Sender.Name + ")");
-        }
-        
         /// <summary>
         /// Create an agent
         /// </summary>
         /// <param name="name">Name of the agent</param>
         public Agent(string name)
         {
-            _mailbox = new List<Message>();
             _archivedMailbox = new List<Message>();
             _spawnTime = Time.time;
             _name = name;
@@ -126,17 +110,6 @@ namespace MultiAgentSystem {
         }
 
         /// <summary>
-        /// Read and treat mails in mailbox
-        /// </summary>
-        public abstract void ReadMailbox();
-
-        protected void ClearMailbox()
-        {
-            _archivedMailbox.AddRange(_mailbox);
-            _mailbox.Clear();
-        }
-
-        /// <summary>
         /// Current simulation time of the agent
         /// </summary>
         /// <returns></returns>
@@ -168,6 +141,12 @@ namespace MultiAgentSystem {
         }
 
         /// <summary>
+        /// Do an action depending on message and agent type
+        /// </summary>
+        /// <param name="message">The message to process</param>
+        public abstract void ProcessMessage(Message message);
+
+        /// <summary>
         /// Receive a message from tracker
         /// </summary>
         /// <param name="value">The message</param>
@@ -175,7 +154,7 @@ namespace MultiAgentSystem {
         {
             if (value.Receiver == this || value.Receiver == null)
             {
-                _mailbox.Add(value);
+                ProcessMessage(value);
             }
 
         }

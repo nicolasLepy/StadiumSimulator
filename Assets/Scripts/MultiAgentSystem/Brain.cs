@@ -71,11 +71,6 @@ namespace MultiAgentSystem
         /// </summary>
         public void Loop()
         {
-            foreach (KeyValuePair<Guid, Agent> agent in _agents)
-            {
-                agent.Value.ReadMailbox();
-            }
-
             foreach(KeyValuePair<Guid,Agent> a in _agents)
             {
                 a.Value.StateMachine.Action();
@@ -91,7 +86,7 @@ namespace MultiAgentSystem
             T newAgent = new T();
             KeyValuePair<Guid,Agent> agent = new KeyValuePair<Guid, Agent>(newAgent.AgentId,newAgent);
             _agents.Add(agent);
-            _provider.Subscribe(newAgent);
+            newAgent.Subscribe(_provider);
             newAgent.Body.transform.position = position;
             newAgent.CreateStateMachine();
             return newAgent;

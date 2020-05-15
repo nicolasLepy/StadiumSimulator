@@ -48,35 +48,28 @@ namespace MultiAgentSystem
             _stateMachine = new TicketOfficeStateMachine(this);
         }
 
-        public override void ReadMailbox()
-        {
-            foreach (Message m in _mailbox)
-            {
-                Debug.Log(this + " received " + m.Type + " from " + m.Sender);
-                switch (m.Type.messageObject())
-                {
-                    case MessageObject.ASK_FOR_TICKET:
-                        askForTicket = m;
-                        receivedAskForTicket = true;
-                        break;
-                    case MessageObject.ASK_FOR_QUEUE:
-                        _queue.Add(m.Sender);
-                        MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(m.Sender));
-                        SendMessage(m.Sender, answer);
-                        break;
-                }
-            }
-            
-            ClearMailbox();
-        }
-
         protected override void CreateBody()
         {
             CreateBody<AgentTicketOfficeBody>("TicketOfficeBody");
             
         }
 
-
-
+        public override void ProcessMessage(Message message)
+        {
+            Debug.Log(this + " received " + message.Type + " from " + message.Sender);
+            switch (message.Type.messageObject())
+            {
+                case MessageObject.ASK_FOR_TICKET:
+                    askForTicket = message;
+                    receivedAskForTicket = true;
+                    break;
+                case MessageObject.ASK_FOR_QUEUE:
+                    _queue.Add(message.Sender);
+                    MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(message.Sender));
+                    SendMessage(message.Sender, answer);
+                    break;
+            }
+            archivedMailbox.Add(message);
+        }
     }
 }
