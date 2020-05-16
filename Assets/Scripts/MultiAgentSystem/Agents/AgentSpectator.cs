@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MultiAgentSystem
 {
@@ -83,7 +84,7 @@ namespace MultiAgentSystem
                 case MessageObject.GET_QUEUE_POSITION:
                     MessageSendQueuePosition msg = message.Type as MessageSendQueuePosition;
                     inQueue = true;
-                    queuePosition = msg.position;
+                    queuePosition = msg.position + Random.insideUnitSphere*0.6f;
                     break;
                 //A ticket was given by the ticket office
                 case MessageObject.GIVE_TICKET:
