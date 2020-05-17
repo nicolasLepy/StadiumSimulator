@@ -17,6 +17,7 @@ namespace MultiAgentSystem
         [SerializeField] private int _spawiningDurationInSec;
         [SerializeField] private int _ticketPercentage;
         [SerializeField] private int _radius;
+        [SerializeField] private int _awaySpectatorPercentage;
 
         // Start is called before the first frame update
         void Start()
@@ -47,8 +48,12 @@ namespace MultiAgentSystem
                             .SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
                         if (UnityEngine.Random.Range(1, 100) <= _ticketPercentage)
                         {
-                            spawnedAgent.ticket = new Ticket(UnityEngine.Random.Range(0,12));
+                            Ticket t = Environment.GetInstance().environment.RequestSeat(Utils.PseudoGaussRandom(1, Environment.GetInstance().CategoriesNumber));
+                            if(t!=null)
+                                spawnedAgent.ticket = t;
                         }
+
+                        spawnedAgent.side = UnityEngine.Random.Range(1, 100) <= _awaySpectatorPercentage ? Team.AWAY : Team.HOME;
                     }
                 }
 

@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketOfficeSpawner (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3159414538361615276, guid: db484112f974f4844b794bd9a59c7ec8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4314548518636804284, guid: db484112f974f4844b794bd9a59c7ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -738,6 +743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StadiumEntrance (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082897516202150405, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b, type: 3}
@@ -1506,6 +1516,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1994531825}
+  - {fileID: 1272643823}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2169,6 +2180,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketOfficeSpawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3159414538361615276, guid: db484112f974f4844b794bd9a59c7ec8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4314548518636804284, guid: db484112f974f4844b794bd9a59c7ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2633,7 +2649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.06676521, y: 0.6403416, z: -0.05602265, w: 0.7631295}
-  m_LocalPosition: {x: -174, y: 96, z: -260}
+  m_LocalPosition: {x: -174, y: 50, z: -260}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2949,6 +2965,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketOfficeSpawner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3159414538361615276, guid: db484112f974f4844b794bd9a59c7ec8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4314548518636804284, guid: db484112f974f4844b794bd9a59c7ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3192,8 +3213,112 @@ PrefabInstance:
       propertyPath: m_Name
       value: StadiumEntrance (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8082897516202150405, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b, type: 3}
+--- !u!1 &1272643822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1272643823}
+  - component: {fileID: 1272643825}
+  - component: {fileID: 1272643824}
+  - component: {fileID: 1272643826}
+  m_Layer: 5
+  m_Name: RightPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1272643823
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272643822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 513284625}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -80.2, y: 0}
+  m_SizeDelta: {x: 160.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1272643824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272643822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.104048364, b: 0.49056602, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1272643825
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272643822}
+  m_CullTransparentMesh: 0
+--- !u!114 &1272643826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272643822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 1
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1276878160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,6 +3405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1279318412}
+  - component: {fileID: 1279318413}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -3304,6 +3430,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279318413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279318411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef38e247fbdec049bcad2715cacde2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1280048732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280048732}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 222.7, y: 2, z: -144.2}
+  m_LocalPosition: {x: 233.4, y: 2, z: -144.2}
   m_LocalScale: {x: 4, y: 3, z: 150.11482}
   m_Children: []
   m_Father: {fileID: 614356961}
@@ -4034,6 +4172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketOfficeSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3159414538361615276, guid: db484112f974f4844b794bd9a59c7ec8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4314548518636804284, guid: db484112f974f4844b794bd9a59c7ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4313,6 +4456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StadiumEntrance (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082897516202150405, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b, type: 3}
@@ -4906,6 +5054,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TicketOfficeSpawner (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3159414538361615276, guid: db484112f974f4844b794bd9a59c7ec8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4314548518636804284, guid: db484112f974f4844b794bd9a59c7ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5143,6 +5296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StadiumEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082897516202150405, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfd9dcaa9a1d6d40949ad5ee9ce097b, type: 3}

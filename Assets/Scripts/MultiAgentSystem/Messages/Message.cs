@@ -96,12 +96,14 @@ namespace MultiAgentSystem
     public class MessageNoTicketAvailable : MessageType
     {
         private List<int> _stillAvailableCategories;
+        public int askedDoor { get; set; }
 
         public List<int> stillAvailableCategories => _stillAvailableCategories;
 
-        public MessageNoTicketAvailable(List<int> stillAvailableCategories)
+        public MessageNoTicketAvailable(List<int> stillAvailableCategories, int askedDoor)
         {
 
+            this.askedDoor = askedDoor;
             _stillAvailableCategories = stillAvailableCategories;
         }
 

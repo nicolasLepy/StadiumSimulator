@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MultiAgentSystem
@@ -15,10 +16,14 @@ namespace MultiAgentSystem
         
         public StateTicketOfficeGiveTicket(StateMachine stateMachine, Agent agent) : base(stateMachine)
         {
+            
             _transaction_duration = 100;
             _agent = agent;
+            AgentTicketOffice ato = _stateMachine.Agent as AgentTicketOffice;
+            ato.transactionFinished = false;
         }
-
+        
+        
         public override void Action()
         {
             time++;
@@ -26,35 +31,48 @@ namespace MultiAgentSystem
             if (time > _transaction_duration)
             {
                 AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
-                Ticket ticket = Environment.GetInstance().environmentTest.RequestSeat((agent.askForTicket.Type as MessageAskForTicket).door);
+                Ticket ticket = Environment.GetInstance().environment.RequestSeat((agent.askForTicket.Type as MessageAskForTicket).door);
                 agent.receivedAskForTicket = false;
                 if (ticket != null)
                 {
                     agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket(ticket));
+                    agent.transactionFinished = true;
                     //agent.SendMessage(agent.askForTicket.Sender, new MessageGiveTicket());
                 }
                 else
                 {
                     List<int> availableCategories =
-                        Environment.GetInstance().environmentTest.StillAvailableCategories();
-                    agent.SendMessage(agent.queue.Pop(), new MessageNoTicketAvailable(availableCategories));
+                        Environment.GetInstance().environment.StillAvailableCategories();
+                    agent.SendMessage(agent.queue.First(), new MessageNoTicketAvailable(availableCategories,(agent.askForTicket.Type as MessageAskForTicket).door));
                     //agent.SendMessage(agent.askForTicket.Sender, new MessageNoTicketAvailable());
+                    //No seat available, the transaction is finished
+                    if (availableCategories.Count == 0)
+                    {
+                        agent.queue.Pop(); //Eliminate the first agent in the queue
+                        agent.transactionFinished = true;
+                    }
                 }
             
-                //Envoyer la nouvelle position à tout le monde
-                foreach (Agent a in agent.queue.agents)
-                {
-                    agent.SendMessage(a,new MessageSendQueuePosition(agent.queue.GetPositionForAgent(a)));
-                }
+                
             }
 
         }
 
         public override State Next()
         {
+            AgentTicketOffice agent = _stateMachine.Agent as AgentTicketOffice;
             State res = this;
-            if (time > _transaction_duration)
+            if (time > _transaction_duration && agent.transactionFinished)
+            {
+                //Envoyer la nouvelle position à tout le monde
+                foreach (Agent a in agent.queue.agents)
+                {
+                    agent.SendMessage(a,new MessageSendQueuePosition(agent.queue.GetPositionForAgent(a)));
+                }
                 res = new StateTicketOfficeWaiting(_stateMachine);
+            }
+            else if (time > _transaction_duration)
+                time = 0;
             return res;
         }
     }

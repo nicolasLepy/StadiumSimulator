@@ -15,7 +15,7 @@ namespace MultiAgentSystem
         #region SingletonManagement
         private static Environment _instance = null;
         private Environment() {
-            _environment = new Stadium();
+            _environment = new Stadium(12);
             _brain = new Brain();
         }
         public static Environment GetInstance()
@@ -40,7 +40,12 @@ namespace MultiAgentSystem
 
         public Brain Brain { get => _brain; }
 
-        public Stadium environmentTest => _environment;
+        /// <summary>
+        /// Get number of door of the stadium
+        /// </summary>
+        public int CategoriesNumber => _environment.CategoriesNumber;
+        
+        public Stadium environment => _environment;
 
     }
 

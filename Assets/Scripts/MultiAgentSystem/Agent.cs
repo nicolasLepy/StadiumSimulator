@@ -41,13 +41,6 @@ namespace MultiAgentSystem {
         public AgentBody Body { get => _body.GetComponent<AgentBody>(); }
 
         public StateMachine StateMachine { get => _stateMachine; }
-        /// <summary>
-        /// Get the multi-agents environment
-        /// </summary>
-        private Environment GetEnvironment
-        {
-            get => Environment.GetInstance();
-        }
 
         public abstract void CreateStateMachine();
 
@@ -101,7 +94,7 @@ namespace MultiAgentSystem {
         public void SendMessage(Agent receiver, MessageType message)
         {
             Message msg = new Message(this, receiver, message);
-            GetEnvironment.Brain.AddMessage(msg);
+            Environment.GetInstance().Brain.AddMessage(msg);
         }
 
         public override string ToString()

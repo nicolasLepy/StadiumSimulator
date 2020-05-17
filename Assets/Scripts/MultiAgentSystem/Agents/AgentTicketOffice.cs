@@ -16,6 +16,8 @@ namespace MultiAgentSystem
         
         public Message askForTicket { get; set; }
         public bool receivedAskForTicket { get; set; }
+        
+        public bool transactionFinished { get; set; }
 
         /// <summary>
         /// The queue in front of the ticket office

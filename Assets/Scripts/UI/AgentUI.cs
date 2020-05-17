@@ -42,7 +42,7 @@ public class AgentUI : MonoBehaviour
         {
             messages.Add(m.ToString());
         }
-        
+
         foreach (Transform child in _panelMessages.transform)
         {
             Destroy(child.gameObject);
@@ -50,25 +50,31 @@ public class AgentUI : MonoBehaviour
         
         
         
+        messages.Reverse();
+        int i = 0;
         foreach (string m in messages)
         {
-            GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
-            txt = GameObject.Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
-            txt.GetComponent<Text>().text = m;
-            txt.transform.SetParent(_panelMessages.transform);
+            i++;
+            if (i < 10)
+            {
+                GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
+                txt = GameObject.Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
+                txt.GetComponent<Text>().text = m;
+                txt.transform.SetParent(_panelMessages.transform);
+            }
         }
     }
 
     void OnMouseOver()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
+        if (Input.GetMouseButtonDown(0))
+        {
             _txtAgentName.text = agent.Name;
             _txtAgentGuid.text = agent.AgentId.ToString();
             _txtBornAt.text = "Spawn time : " + agent.SpawnTime.ToString("F2") + " sec";
             _txtLivesSince.text = "Lives since : " + agent.GetSimulationTime().ToString("F2") + " sec";
             _txtCurrentState.text = "Current state : " + agent.StateMachine;
             ListMessages();
-        //}
+        }
     }
 }

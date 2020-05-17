@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.MultiAgentSystem;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,8 @@ namespace MultiAgentSystem
     public class AgentSpectator : Agent
     {
 
+        private Vector3 _spawnLocation;
+        public Vector3 spawnLocation => _spawnLocation;
         /// <summary>
         /// If has a ticket or not
         /// </summary>
@@ -22,6 +25,12 @@ namespace MultiAgentSystem
         public MessageNoTicketAvailable ticketRefused { get; set; }
         public bool inQueue { get; set; }
         public Vector3 queuePosition { get; set; }
+        
+        public bool noTicketAvailable { get; set; }
+        
+        public Team side { get; set; }
+        
+        public bool notifiedTicketRefused { get; set; }
 
         
         public override Vector3 Position => _body.transform.position;
@@ -32,6 +41,7 @@ namespace MultiAgentSystem
         /// <param name="name">Name of the agent</param>
         private AgentSpectator(string name) : base(name)
         {
+            noTicketAvailable = false;
         }
 
         public override void CreateStateMachine()
@@ -48,6 +58,7 @@ namespace MultiAgentSystem
         protected override void CreateBody()
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
+            _spawnLocation = _body.transform.position;
         }
         
 
@@ -94,8 +105,14 @@ namespace MultiAgentSystem
                 //There is no available ticket anymore
                 case MessageObject.NO_TICKET_AVAILABLE:
                     //ticket is set to true only to make the agent move out the ticket office
+                    notifiedTicketRefused = true;
                     ticket = null;
                     ticketRefused = (message.Type as MessageNoTicketAvailable);
+                    //No more categories available : no ticket available
+                    if (ticketRefused.stillAvailableCategories.Count == 0)
+                    {
+                        noTicketAvailable = true;
+                    }
                     break;
             }
             

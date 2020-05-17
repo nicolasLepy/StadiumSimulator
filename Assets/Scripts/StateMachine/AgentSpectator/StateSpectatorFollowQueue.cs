@@ -31,16 +31,45 @@ namespace MultiAgentSystem
 
             if (!_askedForTicket && _ticketOffice.queue.First() == agent)
             {
-                if (Vector3.Distance(agent.Position, _ticketOffice.Position) < 1.7f)
+                if (Vector3.Distance(agent.Position, _ticketOffice.Position) < 2f)
                 {
-                    agent.SendMessage(_ticketOffice,new MessageAskForTicket(UnityEngine.Random.Range(0,12)));
-                    _askedForTicket = true;
+                    //First demand
+                    if (agent.ticketRefused == null)
+                    {
+                        int askForDoor = 0;
+                        askForDoor = Utils.PseudoGaussRandom(1,  Environment.GetInstance().CategoriesNumber);
+                        agent.SendMessage(_ticketOffice,new MessageAskForTicket(askForDoor));
+                        _askedForTicket = true;
+                    }
+                    //Second demand, he get a list with available category, he ask
+                    else
+                    {
+                        Debug.Log("new try");
+                        int askForDoor =
+                            agent.ticketRefused.stillAvailableCategories[Random.Range(0, agent.ticketRefused.stillAvailableCategories.Count - 1)]; // ILLEGAL : if between there a no ticket in this category
+                        //askForDoor = Utils.PseudoGaussRandom(1,  Environment.GetInstance().CategoriesNumber);
+                        agent.SendMessage(_ticketOffice,new MessageAskForTicket(askForDoor)); 
+                        _askedForTicket = true;
+                    }
                 }
             }
-            if(agent.ticket != null)
+
+            if (agent.ticketRefused != null && agent.notifiedTicketRefused)
+            {
+                _askedForTicket = false;
+                agent.notifiedTicketRefused = false;
+                //res = this;  //new SpectatorStateGoOut(_stateMachine);
+            }
+            
+            if (agent.ticket != null)
+            {
+                res = new SpectatorStateEnterStadium(_stateMachine);
+            }
+
+            if (agent.noTicketAvailable)
+            {
                 res = new SpectatorStateGoOut(_stateMachine);
-            if (agent.ticketRefused != null)
-                res = new SpectatorStateGoOut(_stateMachine);
+            }
             return res;
         }
     }
