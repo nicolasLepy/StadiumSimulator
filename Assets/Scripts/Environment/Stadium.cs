@@ -25,7 +25,7 @@ namespace MultiAgentSystem
     public class Stadium
     {
 
-        private Dictionary<int, Team> _awayZone;
+        private Dictionary<int, Team> _sideByCategories;
         private Dictionary<int, int> _seatsByDoor;
         private int _categoriesNumber;
         public int CategoriesNumber => _categoriesNumber;
@@ -34,15 +34,15 @@ namespace MultiAgentSystem
         {
             _categoriesNumber = zonesNumber;
             _seatsByDoor = new Dictionary<int, int>();
-            _awayZone = new Dictionary<int, Team>();
+            _sideByCategories = new Dictionary<int, Team>();
             for (int i = 1; i <= _categoriesNumber; i++)
             {
                 _seatsByDoor.Add(i, 10);
-                _awayZone.Add(i, Team.HOME);
+                _sideByCategories.Add(i, Team.HOME);
             }
 
-            _awayZone[1] = Team.AWAY;
-            _awayZone[2] = Team.AWAY;
+            _sideByCategories[1] = Team.AWAY;
+            _sideByCategories[12] = Team.AWAY;
         }
 
         public int AvailableSeats(int category)
@@ -52,13 +52,24 @@ namespace MultiAgentSystem
                 res = _seatsByDoor[category];
             return res;
         }
+
+        public List<int> CategoriesAvailableForSide(Team side)
+        {
+            List<int> res = new List<int>();
+            foreach (KeyValuePair<int, Team> kvp in _sideByCategories)
+            {
+                if (kvp.Value == side) res.Add(kvp.Key);
+            }
+
+            return res;
+        }
         
-        public List<int> StillAvailableCategories()
+        public List<int> StillAvailableCategories(Team side)
         {
             List<int> res= new List<int>();
             foreach (KeyValuePair<int, int> kvp in _seatsByDoor)
             {
-                if (kvp.Value > 0) res.Add(kvp.Key);
+                if (_sideByCategories[kvp.Key] == side && kvp.Value > 0) res.Add(kvp.Key);
             }
             return res;
         }

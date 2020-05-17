@@ -37,7 +37,7 @@ namespace MultiAgentSystem
                     if (agent.ticketRefused == null)
                     {
                         int askForDoor = 0;
-                        askForDoor = Utils.PseudoGaussRandom(1,  Environment.GetInstance().CategoriesNumber);
+                        askForDoor = agent.GetCategory();// Utils.PseudoGaussRandom(1,  Environment.GetInstance().CategoriesNumber);
                         agent.SendMessage(_ticketOffice,new MessageAskForTicket(askForDoor));
                         _askedForTicket = true;
                     }

@@ -1225,6 +1225,11 @@ PrefabInstance:
       propertyPath: _radius
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _awaySpectatorPercentage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
 --- !u!4 &465898545 stripped
@@ -3138,6 +3143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _ticketPercentage
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _awaySpectatorPercentage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
@@ -5222,6 +5232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _radius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _awaySpectatorPercentage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}

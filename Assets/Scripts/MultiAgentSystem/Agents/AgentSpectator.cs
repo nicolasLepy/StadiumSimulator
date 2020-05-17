@@ -25,14 +25,30 @@ namespace MultiAgentSystem
         public MessageNoTicketAvailable ticketRefused { get; set; }
         public bool inQueue { get; set; }
         public Vector3 queuePosition { get; set; }
-        
         public bool noTicketAvailable { get; set; }
-        
-        public Team side { get; set; }
-        
+        private Team _side;
+        public Team side
+        {
+            get => _side;
+            set
+            {
+                _side = value;
+                if (_side == Team.HOME)
+                {
+                    Material blue = Resources.Load("Materials/Blue", typeof(Material)) as Material;
+                    _body.gameObject.GetComponent<Renderer>().material = blue;
+                }
+                else
+                {
+                    Material red = Resources.Load("Materials/Red", typeof(Material)) as Material;
+                    _body.gameObject.GetComponent<Renderer>().material = red;
+                }
+            }
+        }
         public bool notifiedTicketRefused { get; set; }
+        private List<int> _hisSideCategories;
+        public List<int> hisSideCategories => _hisSideCategories;
 
-        
         public override Vector3 Position => _body.transform.position;
 
         /// <summary>
@@ -42,6 +58,7 @@ namespace MultiAgentSystem
         private AgentSpectator(string name) : base(name)
         {
             noTicketAvailable = false;
+            _hisSideCategories = new List<int>();
         }
 
         public override void CreateStateMachine()
@@ -86,6 +103,15 @@ namespace MultiAgentSystem
             return res;
         }
 
+        /// <summary>
+        /// When asking for a ticket, generate the category to ask to ticket office
+        /// </summary>
+        /// <returns></returns>
+        public int GetCategory()
+        {
+            return hisSideCategories[Utils.PseudoGaussRandom(0, hisSideCategories.Count - 1)];
+        }
+
         public override void ProcessMessage(Message message)
         {
             Debug.Log(this + " received " + message.Type + " from " + message.Sender);
@@ -118,26 +144,8 @@ namespace MultiAgentSystem
             
             archivedMailbox.Add(message);
             
-            if (_stateMachine.current is SpectatorChoseStadiumEntrance)
-            {
-                Material blue = Resources.Load("Materials/Blue", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is StateGoToTicketOffice)
-            {
-                Material blue = Resources.Load("Materials/Green", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is StateSpectatorFollowQueue)
-            {
-                Material blue = Resources.Load("Materials/Grey", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
-            if (_stateMachine.current is SpectatorStateGoOut)
-            {
-                Material blue = Resources.Load("Materials/Red", typeof(Material)) as Material;
-                _body.gameObject.GetComponent<Renderer>().material = blue;
-            }
+            
+            
         }
     }
 }

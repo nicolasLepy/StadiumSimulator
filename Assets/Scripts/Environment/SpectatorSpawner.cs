@@ -46,14 +46,27 @@ namespace MultiAgentSystem
                         float z = UnityEngine.Random.Range(-_radius, _radius) + transform.position.z;
                         AgentSpectator spawnedAgent = (AgentSpectator) Environment.GetInstance().Brain
                             .SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
+                       
+                        
+                        if (UnityEngine.Random.Range(1, 100) <= _awaySpectatorPercentage)
+                        {
+                            spawnedAgent.side = Team.AWAY;
+                        }
+                        else
+                        {
+                            spawnedAgent.side = Team.HOME;
+                        }
+                        //We gave to him categories for his side
+                        spawnedAgent.hisSideCategories.AddRange(Environment.GetInstance().environment
+                            .CategoriesAvailableForSide(spawnedAgent.side));
+                        
                         if (UnityEngine.Random.Range(1, 100) <= _ticketPercentage)
                         {
-                            Ticket t = Environment.GetInstance().environment.RequestSeat(Utils.PseudoGaussRandom(1, Environment.GetInstance().CategoriesNumber));
+                            Ticket t = Environment.GetInstance().environment.RequestSeat(spawnedAgent.GetCategory());
                             if(t!=null)
                                 spawnedAgent.ticket = t;
                         }
 
-                        spawnedAgent.side = UnityEngine.Random.Range(1, 100) <= _awaySpectatorPercentage ? Team.AWAY : Team.HOME;
                     }
                 }
 

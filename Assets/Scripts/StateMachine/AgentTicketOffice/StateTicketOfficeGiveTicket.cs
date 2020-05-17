@@ -42,7 +42,7 @@ namespace MultiAgentSystem
                 else
                 {
                     List<int> availableCategories =
-                        Environment.GetInstance().environment.StillAvailableCategories();
+                        Environment.GetInstance().environment.StillAvailableCategories((agent.queue.First() as AgentSpectator).side);
                     agent.SendMessage(agent.queue.First(), new MessageNoTicketAvailable(availableCategories,(agent.askForTicket.Type as MessageAskForTicket).door));
                     //agent.SendMessage(agent.askForTicket.Sender, new MessageNoTicketAvailable());
                     //No seat available, the transaction is finished
