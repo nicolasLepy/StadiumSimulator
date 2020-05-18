@@ -18,6 +18,23 @@ namespace MultiAgentSystem
         private AgentTicketOffice _target;
         public StateGoToTicketOffice(StateMachine stateMachine) : base(stateMachine)
         {
+
+            List<AgentTicketOffice> ticketOfficesAgent =
+                (_stateMachine.Agent.Body as AgentSpectatorBody).inLineOfVision;
+
+            int minAgents = -1;
+            AgentTicketOffice selectedTicketOffice = null;
+            foreach (AgentTicketOffice ato in ticketOfficesAgent)
+            {
+                int agents = ato.queue.agents.Count;
+                if (agents < minAgents || minAgents == -1)
+                {
+                    selectedTicketOffice = ato;
+                    minAgents = agents;
+                }
+            }
+            
+            /*
             List<GameObject> ticketOffices = _stateMachine.Agent.Body.ListCloseTicketOffice(80);
             AgentTicketOffice selectedTicketOffice = null;
             int minAgents = -1;
@@ -33,7 +50,7 @@ namespace MultiAgentSystem
                         minAgents = agents;
                     }
                 }
-            }
+            }*/
 
             _target = selectedTicketOffice;
             _stateMachine.Agent.SendMessage(_target, new MessageAskForQueue());

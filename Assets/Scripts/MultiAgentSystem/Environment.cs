@@ -15,7 +15,7 @@ namespace MultiAgentSystem
         #region SingletonManagement
         private static Environment _instance = null;
         private Environment() {
-            _environment = new Stadium(12);
+            _environment = new Stadium(8);
             _brain = new Brain();
         }
         public static Environment GetInstance()

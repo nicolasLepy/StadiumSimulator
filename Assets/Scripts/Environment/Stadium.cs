@@ -27,22 +27,37 @@ namespace MultiAgentSystem
 
         private Dictionary<int, Team> _sideByCategories;
         private Dictionary<int, int> _seatsByDoor;
+        private Dictionary<int, Vector3> _categoriesPosition;
+
+        public void SetCategoryPosition(int category, Vector3 position)
+        {
+            _categoriesPosition.Add(category, position);
+        }
+        
         private int _categoriesNumber;
         public int CategoriesNumber => _categoriesNumber;
+        
+        
 
         public Stadium(int zonesNumber)
         {
             _categoriesNumber = zonesNumber;
             _seatsByDoor = new Dictionary<int, int>();
             _sideByCategories = new Dictionary<int, Team>();
+            _categoriesPosition = new Dictionary<int, Vector3>();
             for (int i = 1; i <= _categoriesNumber; i++)
             {
                 _seatsByDoor.Add(i, 10);
                 _sideByCategories.Add(i, Team.HOME);
             }
 
-            _sideByCategories[1] = Team.AWAY;
-            _sideByCategories[12] = Team.AWAY;
+            _sideByCategories[4] = Team.AWAY;
+            _sideByCategories[8] = Team.AWAY;
+        }
+
+        public Vector3 CategoryPosition(int category)
+        {
+            return _categoriesPosition[category];
         }
 
         public int AvailableSeats(int category)

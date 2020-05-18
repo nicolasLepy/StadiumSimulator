@@ -12,7 +12,9 @@ namespace MultiAgentSystem
         
         public SpectatorStateEnterStadium(StateMachine stateMachine) : base(stateMachine)
         {
-            _destination = new Vector3(250,3,-117);
+            AgentSpectator spectator = _stateMachine.Agent as AgentSpectator;
+            _destination = Environment.GetInstance().environment.CategoryPosition(spectator.ticket.door) + Random.insideUnitSphere * 3;
+            //_destination = new Vector3(250,3,-117);
         }
 
         public override void Action()

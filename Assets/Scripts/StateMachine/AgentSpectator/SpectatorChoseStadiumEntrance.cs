@@ -33,10 +33,11 @@ namespace MultiAgentSystem
         {
             State res = this;
             var agent = _stateMachine.Agent as AgentSpectator;
+            var agentBody = _stateMachine.Agent.Body as AgentSpectatorBody;
             //When close of a ticket office, check ticket offices around him to chose closer
             // WARNING : Use trigger to collect ticket office inside the trigger instead access directly the environment   
             if (agent == null || (agent.ticket != null)) return new SpectatorStateEnterStadium(_stateMachine);
-            if (_stateMachine.Agent.Body.GetClosestTicketOfficeDistance() < 50)
+            if (agentBody.inLineOfVision.Count>0 && agentBody.GetClosestTicketOfficeDistance() < 50)
             {
                 res = new StateGoToTicketOffice(_stateMachine);
             }

@@ -40,31 +40,10 @@ namespace MultiAgentSystem
         }
 
         /// <summary>
-        /// Get ticket offices in a radius from agent position
-        /// </summary>
-        /// <param name="maxRadius">The max radius to detect ticket offices</param>
-        /// <returns>List of ticket offices</returns>
-        public List<GameObject> ListCloseTicketOffice(float maxRadius)
-        {
-            List<GameObject> res = new List<GameObject>();
-
-            foreach (GameObject g in GameObject.FindGameObjectsWithTag("TicketOffice"))
-            {
-                float distance = Vector3.Distance(g.transform.position, _agent.Position);
-                if (distance < maxRadius)
-                {
-                    res.Add(g);
-                }
-            }
-            
-            return res;
-        }
-
-        /// <summary>
         /// Get the distance of closest ticket office
         /// </summary>
         /// <returns>The distance between the agent and the closest ticket office</returns>
-        public float GetClosestTicketOfficeDistance()
+        /*public float GetClosestTicketOfficeDistance()
         {
             float minDistance = -1;
             foreach (GameObject g in GameObject.FindGameObjectsWithTag("TicketOffice"))
@@ -77,7 +56,7 @@ namespace MultiAgentSystem
             }
 
             return minDistance;
-        }
+        }*/
 
         private void FixedUpdate()
         {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 768906064}
   - component: {fileID: 2984984383346976866}
   - component: {fileID: 3299830466954902270}
+  - component: {fileID: 1651320744}
   m_Layer: 0
   m_Name: SpectatorBody
   m_TagString: Spectator
@@ -147,4 +148,17 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1651320744
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652979835476065535}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 80
   m_Center: {x: 0, y: 0, z: 0}

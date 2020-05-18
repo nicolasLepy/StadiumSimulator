@@ -39,7 +39,7 @@ namespace MultiAgentSystem
 
         public override string ToString()
         {
-            return "To : " + _receiver.Name + ". Subject : " + _type.ToString();
+            return "From : " + _sender.Name + ". Subject : " + _type.ToString();
         }
     }
 

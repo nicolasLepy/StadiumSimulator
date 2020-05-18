@@ -22,6 +22,15 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Camera.main.transform.localPosition += new Vector3(0, 0.3f, 0);
+        }
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            Camera.main.transform.localPosition += new Vector3(0, -0.3f, 0);
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             _fpsView = !_fpsView;
