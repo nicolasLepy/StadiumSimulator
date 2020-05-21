@@ -26,6 +26,8 @@ namespace MultiAgentSystem
         public bool inQueue { get; set; }
         public Vector3 queuePosition { get; set; }
         public bool noTicketAvailable { get; set; }
+        private bool _isChecked = false;
+        public bool isChecked => _isChecked;
         private Team _side;
         public Team side
         {
@@ -114,7 +116,7 @@ namespace MultiAgentSystem
 
         public override void ProcessMessage(Message message)
         {
-            Debug.Log(this + " received " + message.Type + " from " + message.Sender);
+            if(Environment.GetInstance().showMessagesLog) Debug.Log(this + " received " + message.Type + " from " + message.Sender);
             switch (message.Type.messageObject())
             {
                 //Spectator get ticket office queue position
@@ -140,6 +142,10 @@ namespace MultiAgentSystem
                         noTicketAvailable = true;
                     }
                     break;
+                case MessageObject.CHECKED:
+                    _isChecked = true;
+                    break;
+                    
             }
             
             archivedMailbox.Add(message);

@@ -58,7 +58,7 @@ namespace MultiAgentSystem
 
         public override void ProcessMessage(Message message)
         {
-            Debug.Log(this + " received " + message.Type + " from " + message.Sender);
+            if(Environment.GetInstance().showMessagesLog) Debug.Log(this + " received " + message.Type + " from " + message.Sender);
             switch (message.Type.messageObject())
             {
                 case MessageObject.ASK_FOR_TICKET:

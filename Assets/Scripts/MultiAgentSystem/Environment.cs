@@ -17,6 +17,7 @@ namespace MultiAgentSystem
         private Environment() {
             _environment = new Stadium(8);
             _brain = new Brain();
+            showMessagesLog = false;
         }
         public static Environment GetInstance()
         {
@@ -27,6 +28,7 @@ namespace MultiAgentSystem
         }
         #endregion
 
+        public bool showMessagesLog { get; }        
         /// <summary>
         /// Multi-agent system
         /// </summary>

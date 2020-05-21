@@ -59,7 +59,8 @@ namespace MultiAgentSystem
         NO_TICKET_AVAILABLE,
         ASK_FOR_QUEUE,
         GET_QUEUE_POSITION,
-        IN_THE_QUEUE
+        IN_THE_QUEUE,
+        CHECKED
     }
 
     public class MessageAskForTicket : MessageType
@@ -118,6 +119,14 @@ namespace MultiAgentSystem
         public MessageObject messageObject()
         {
             return MessageObject.ASK_FOR_QUEUE;
+        }
+    }
+
+    public class MessageChecked : MessageType
+    {
+        public MessageObject messageObject()
+        {
+            return MessageObject.CHECKED;
         }
     }
     

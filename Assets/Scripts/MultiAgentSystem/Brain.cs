@@ -21,6 +21,8 @@ namespace MultiAgentSystem
 
         public List<KeyValuePair<Guid, Agent>> Agents => _agents;
 
+        private List<Agent> _askedForASuicide;
+
         /// <summary>
         /// "Mail box" for all agents who wants send a message to other agents
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
@@ -32,6 +34,7 @@ namespace MultiAgentSystem
         /// </summary>
         public Brain()
         {
+            _askedForASuicide = new List<Agent>();
             _messages = new List<Message>();
             _agents = new List<KeyValuePair<Guid, Agent>>();
             _provider = new MessageTracker();
@@ -68,6 +71,19 @@ namespace MultiAgentSystem
             {
                 a.Value.StateMachine.Action();
             }
+
+            foreach (Agent a in _askedForASuicide)
+            {
+                KeyValuePair<Guid, Agent> agent;
+                foreach (KeyValuePair<Guid, Agent> kvp in _agents)
+                {
+                    if (kvp.Value == a) agent = kvp;
+                }
+
+                _agents.Remove(agent);
+            }
+            _askedForASuicide.Clear();
+
         }
 
         /// <summary>
@@ -83,6 +99,11 @@ namespace MultiAgentSystem
             newAgent.Body.transform.position = position;
             newAgent.CreateStateMachine();
             return newAgent;
+        }
+
+        public void AgentCommitSuicide(Agent a)
+        {
+            _askedForASuicide.Add(a);
         }
     }
 

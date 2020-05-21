@@ -20,7 +20,7 @@ namespace MultiAgentSystem
         {
 
             List<AgentTicketOffice> ticketOfficesAgent =
-                (_stateMachine.Agent.Body as AgentSpectatorBody).inLineOfVision;
+                (_stateMachine.Agent.Body as AgentSpectatorBody).ticketOfficeInLineOfVision;
 
             int minAgents = -1;
             AgentTicketOffice selectedTicketOffice = null;

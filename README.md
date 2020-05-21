@@ -11,15 +11,16 @@ This project aims to simulate the crowd population in a stadium using multi-agen
 | Stadium modelisation | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
 | Dynamic (agent creation, stadium system modelisation) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress  |
 | **Work Package 2** | **Stadium entrance**  |
-| Ticket offices agent | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress  |
+| Ticket offices agent | ![#008000](https://placehold.it/15/008000/000000?text=+) OK  |
 | Spectator agent | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
+| Security agent | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
 | Queues (ticket offices) | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
 | Queues (stadium entrance) | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
 | Choose right door | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
 | Spectator quit stadium if no ticket | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
 | Use of Gauss random | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
 | Home / Away spectators | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
-| Agents are settling correctly in the tribune | ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Not started |
+| Agents are settling correctly in the tribune | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
 | Groups of agents | ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Not started |
 | **Work Package 3** | **Half-time** |
 | *Waiting for WP1 & WP2 completion* |  |

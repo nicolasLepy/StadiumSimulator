@@ -7,13 +7,17 @@ namespace MultiAgentSystem
     {
 
         private Queue _queue;
+
+        public Queue queue => _queue;
+        
         
         
         public AgentSecurity(string name) : base(name)
         {
+            _queue = new Queue(this);
         }
 
-        public AgentSecurity() : base("AgentSecurity")
+        public AgentSecurity() : this("AgentSecurity")
         {
             
         }
@@ -23,7 +27,7 @@ namespace MultiAgentSystem
             _stateMachine = new SecurityStateMachine(this);
         }
 
-        public override Vector3 Position { get; }
+        public override Vector3 Position => _body.transform.position;
         protected override void CreateBody()
         {
             CreateBody<AgentSecurityBody>("SecurityBody");
@@ -31,7 +35,17 @@ namespace MultiAgentSystem
 
         public override void ProcessMessage(Message message)
         {
-            
+            if(Environment.GetInstance().showMessagesLog) Debug.Log(this + " received " + message.Type + " from " + message.Sender);
+            switch (message.Type.messageObject())
+            {
+                case MessageObject.ASK_FOR_QUEUE:
+                    _queue.Add(message.Sender);
+                    MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(message.Sender));
+                    SendMessage(message.Sender, answer);
+                    break;
+            }
+            archivedMailbox.Add(message);
+
         }
     }
 }

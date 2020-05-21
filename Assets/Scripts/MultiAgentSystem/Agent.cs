@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace MultiAgentSystem { 
 
@@ -149,6 +151,15 @@ namespace MultiAgentSystem {
             {
                 ProcessMessage(value);
             }
+
+        }
+
+        public void CommitSuicide()
+        {
+            Environment.GetInstance().Brain.AgentCommitSuicide(this);
+            (Body as AgentSpectatorBody).Detach();
+
+
 
         }
     }

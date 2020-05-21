@@ -12,6 +12,7 @@ TagManager:
   - StadiumEntrance
   - Counter
   - SecuritySpawner
+  - Security
   layers:
   - Default
   - TransparentFX

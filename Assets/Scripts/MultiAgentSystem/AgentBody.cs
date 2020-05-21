@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using NavMeshBuilder = UnityEditor.AI.NavMeshBuilder;
 using Object = System.Object;
 
 namespace MultiAgentSystem
@@ -58,10 +59,8 @@ namespace MultiAgentSystem
             return minDistance;
         }*/
 
-        private void FixedUpdate()
-        {
-            
-        }
+      
+
 
         
 
