@@ -22,6 +22,10 @@ namespace MultiAgentSystem
         // Start is called before the first frame update
         void Start()
         {
+        }
+
+        public void Activate()
+        {
             StartCoroutine(CoroutineSpawnAgent());
         }
 

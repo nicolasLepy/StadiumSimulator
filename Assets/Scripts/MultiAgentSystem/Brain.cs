@@ -2,6 +2,7 @@
 using Assets.Scripts.MultiAgentSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MultiAgentSystem
@@ -28,22 +29,42 @@ namespace MultiAgentSystem
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
         /// </summary>
         private List<Message> _messages;
+
+        private void SpawnTicketsOffices(GameObject ticketOfficesLocation, int number)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Vector3 position = ticketOfficesLocation.transform.position + (i*8 * ticketOfficesLocation.gameObject.transform.forward);
+                Agent ato = SpawnAgent<AgentTicketOffice>(position);
+                ato.Body.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,ticketOfficesLocation.transform.rotation.eulerAngles.y + 90,0));  
+            }
+        }
         
         /// <summary>
         /// Initialize the multi-agent brain
         /// </summary>
-        public Brain()
+        public Brain(List<int> ticketsOffices)
         {
             _askedForASuicide = new List<Agent>();
             _messages = new List<Message>();
             _agents = new List<KeyValuePair<Guid, Agent>>();
             _provider = new MessageTracker();
             
+            //North ticket offices
+            SpawnTicketsOffices(GameObject.Find("NorthTicketOfficeSpawner"), ticketsOffices[0]);
+            //South ticket offices
+            SpawnTicketsOffices(GameObject.Find("SouthTicketOfficeSpawner"), ticketsOffices[1]);
+            //West ticket offices
+            SpawnTicketsOffices(GameObject.Find("WestTicketOfficeSpawner"), ticketsOffices[2]);
+            //East ticket offices
+            SpawnTicketsOffices(GameObject.Find("EastTicketOfficeSpawner"), ticketsOffices[3]);
+
+            /*
             foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
             {
                 Agent ato = SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
                 ato.Body.gameObject.transform.rotation = ticketOfficeSpawner.transform.rotation;
-            }
+            }*/
 
             foreach (GameObject securitySpawner in GameObject.FindGameObjectsWithTag("SecuritySpawner"))
             {

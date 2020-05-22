@@ -16,10 +16,12 @@ public class AgentUI : MonoBehaviour
     private Text _txtCurrentState;
     private GameObject _panelMessages;
 
+    
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<AgentBody>().agent;
+        
+        agent = GetComponent<AgentBody>()?.agent;
         _txtAgentName = GameObject.Find("TxtAgentName").GetComponent<Text>();
         _txtAgentGuid = GameObject.Find("TxtAgentGuid").GetComponent<Text>();
         _txtBornAt = GameObject.Find("TxtBorn").GetComponent<Text>();

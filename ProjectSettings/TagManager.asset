@@ -13,6 +13,7 @@ TagManager:
   - Counter
   - SecuritySpawner
   - Security
+  - TicketOfficeLocation
   layers:
   - Default
   - TransparentFX

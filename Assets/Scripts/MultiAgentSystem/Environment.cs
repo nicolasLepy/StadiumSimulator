@@ -16,7 +16,6 @@ namespace MultiAgentSystem
         private static Environment _instance = null;
         private Environment() {
             _environment = new Stadium(8);
-            _brain = new Brain();
             showMessagesLog = false;
         }
         public static Environment GetInstance()
@@ -27,12 +26,18 @@ namespace MultiAgentSystem
             return _instance;
         }
         #endregion
-
+        
         public bool showMessagesLog { get; }        
         /// <summary>
         /// Multi-agent system
         /// </summary>
         private Brain _brain;
+
+        public void CreateBrain(List<int> ticketsOffices)
+        {
+            _brain = new Brain(ticketsOffices);
+
+        }
 
         /// <summary>
         /// Temporary : only to test multi-agents class
