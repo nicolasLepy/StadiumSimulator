@@ -28,6 +28,7 @@ namespace MultiAgentSystem
             //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
             if (dist < 3f)
             {
+                Environment.GetInstance().Brain.timesToSitInStadium.Add(Time.time - (_stateMachine.Agent as AgentSpectator).SpawnTime);
                 Debug.Log("Suicide");
                 _stateMachine.Agent.CommitSuicide();
             }

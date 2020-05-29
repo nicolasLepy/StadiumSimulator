@@ -8,14 +8,18 @@ namespace MultiAgentSystem
     /// </summary>
     public class Queue
     {
+        private List<int> _peoplesInQueue;
+
+        public List<int> peoplesInQueue => _peoplesInQueue;
+
         private List<Agent> _agents;
         private Agent _owner;
 
         public Queue(Agent owner)
         {
+            _peoplesInQueue = new List<int>();
             _agents = new List<Agent>();
             _owner = owner;
-
         }
 
         public Vector3 position

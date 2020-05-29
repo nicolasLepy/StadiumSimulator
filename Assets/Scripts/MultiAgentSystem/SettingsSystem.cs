@@ -42,6 +42,11 @@ namespace MultiAgentSystem
             }
         }
 
+        public void OnClickExportData()
+        {
+            Environment.GetInstance().Brain.ExportData();
+        }
+
     
         // Start is called before the first frame update
         void Start()

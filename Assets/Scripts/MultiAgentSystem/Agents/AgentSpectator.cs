@@ -15,6 +15,8 @@ namespace MultiAgentSystem
     /// </summary>
     public class AgentSpectator : Agent
     {
+        
+        public float timeEnterTicketOfficeQueue { get; set; }
 
         private Vector3 _spawnLocation;
         public Vector3 spawnLocation => _spawnLocation;

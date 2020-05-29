@@ -14,6 +14,7 @@ namespace MultiAgentSystem
     public class AgentTicketOffice : Agent
     {
         
+        
         public Message askForTicket { get; set; }
         public bool receivedAskForTicket { get; set; }
         
@@ -26,6 +27,10 @@ namespace MultiAgentSystem
 
         public Queue queue => _queue;
 
+        private List<float> _times;
+
+        public List<float> times => _times;
+
         
         /// <summary>
         /// Create a ticket office agent
@@ -33,6 +38,7 @@ namespace MultiAgentSystem
         /// <param name="name">Name of the agent</param>
         private AgentTicketOffice(string name) : base(name)
         {
+            _times = new List<float>();
             _queue = new Queue(this);
         }
 

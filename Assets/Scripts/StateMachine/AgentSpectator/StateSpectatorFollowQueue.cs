@@ -14,6 +14,7 @@ namespace MultiAgentSystem
         
         public StateSpectatorFollowQueue(StateMachine stateMachine, AgentTicketOffice ticketOffice) : base(stateMachine)
         {
+            (_stateMachine.Agent as AgentSpectator).timeEnterTicketOfficeQueue = Time.time;
             _askedForTicket = false;
             _ticketOffice = ticketOffice;
         }
@@ -63,6 +64,7 @@ namespace MultiAgentSystem
             
             if (agent.ticket != null)
             {
+                _ticketOffice.times.Add(Time.time - agent.timeEnterTicketOfficeQueue);
                 res = new SpectatorStateEnterStadium(_stateMachine);
             }
 
