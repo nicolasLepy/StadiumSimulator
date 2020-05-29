@@ -52,8 +52,8 @@ public class Zone : MonoBehaviour
         endX = transform.position.x + (transform.localScale.x/2);
         endZ = transform.position.z + (transform.localScale.z/2);*/
         
-        int stepXNumber = (int)((Math.Abs(startX - endX)) / 4.0f);
-        int stepZNumber = (int)((Math.Abs(startZ - endZ)) / 4.0f);
+        int stepXNumber = (int)(Math.Abs(startX - endX) / 4.0f);
+        int stepZNumber = (int)(Math.Abs(startZ - endZ) / 4.0f);
         float stepX = Math.Abs(startX - endX)/(stepXNumber + 0.0f);
         float stepZ = Math.Abs(startZ - endZ)/(stepZNumber + 0.0f);
         

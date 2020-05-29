@@ -1,4 +1,6 @@
-﻿using MultiAgentSystem;
+﻿using System;
+using MultiAgentSystem;
+using UnityEngine;
 
 namespace MultiAgentSystem
 {
@@ -18,7 +20,7 @@ namespace MultiAgentSystem
 
         public override void Action()
         {
-            if (_agent.queue.agents.Count > 0)
+            if (_agent.queue.agents.Count > 0 && Vector3.Distance(_agent.Position, _agent.queue.agents[0].Position) < 1f)
             {
                 _currentTime++;
                 if (_currentTime == _checkingTime)
