@@ -8,10 +8,17 @@ namespace MultiAgentSystem
 
         private Queue _queue;
 
+        /// <summary>
+        /// Queue in front of the agent security
+        /// </summary>
         public Queue queue => _queue;
         
         
         
+        /// <summary>
+        /// Create an agent security
+        /// </summary>
+        /// <param name="name">Name of the agent</param>
         public AgentSecurity(string name) : base(name)
         {
             _queue = new Queue(this);

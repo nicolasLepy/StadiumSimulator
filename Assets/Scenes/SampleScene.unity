@@ -151,6 +151,8 @@ Transform:
   - {fileID: 93718153}
   - {fileID: 227808989}
   - {fileID: 1726304517}
+  - {fileID: 143766706}
+  - {fileID: 886803588}
   m_Father: {fileID: 289111116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -540,7 +542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 2
 --- !u!222 &128054216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -549,6 +551,121 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128054213}
   m_CullTransparentMesh: 0
+--- !u!1001 &143766705
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 50339820}
+    m_Modifications:
+    - target: {fileID: 2811491207191798834, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_Name
+      value: WestStreet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 427.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -374.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _averageAgentsGroupByMinute
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _agentGroupMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _agentGroupMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _spawiningDurationInSec
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _ticketPercentage
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _awaySpectatorPercentage
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
+--- !u!4 &143766706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 143766705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146601123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1490,7 @@ PrefabInstance:
     - target: {fileID: 2811491207191798834, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: m_Name
-      value: SpectatorSpawner (2)
+      value: SouthTram
       objectReference: {fileID: 0}
     - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -1438,22 +1555,22 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _averageAgentsGroupByMinute
-      value: 60
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _spawiningDurationInSec
-      value: 2
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMin
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMax
-      value: 45
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -1996,7 +2113,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 3
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3037,7 +3154,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 3
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3787,6 +3904,121 @@ Transform:
   m_Father: {fileID: 1279318412}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &886803587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 50339820}
+    m_Modifications:
+    - target: {fileID: 2811491207191798834, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_Name
+      value: EastStreet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 118
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _averageAgentsGroupByMinute
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _agentGroupMin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _agentGroupMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _spawiningDurationInSec
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _ticketPercentage
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _awaySpectatorPercentage
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
+--- !u!4 &886803588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 886803587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &924647887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,7 +4384,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 3
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -4716,7 +4948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 2
 --- !u!222 &1065473186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5055,7 +5287,7 @@ PrefabInstance:
     - target: {fileID: 2811491207191798834, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: m_Name
-      value: SpectatorSpawner (1)
+      value: NorthTram
       objectReference: {fileID: 0}
     - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -5120,7 +5352,7 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _averageAgentsGroupByMinute
-      value: 60
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -5130,17 +5362,17 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMin
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMax
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _spawiningDurationInSec
-      value: 2
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -5777,7 +6009,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 2
 --- !u!222 &1356649677
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5961,7 +6193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 2
 --- !u!222 &1371746401
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6911,7 +7143,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 3
+  m_Text: 2
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -8591,7 +8823,7 @@ PrefabInstance:
     - target: {fileID: 2811491207191798834, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: m_Name
-      value: SpectatorSpawner
+      value: NorthStreet
       objectReference: {fileID: 0}
     - target: {fileID: 2811491207191798835, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -8656,7 +8888,7 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _averageAgentsGroupByMinute
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -8666,12 +8898,12 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMax
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _spawiningDurationInSec
-      value: 180
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}

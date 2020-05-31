@@ -40,9 +40,8 @@ namespace MultiAgentSystem
         }
 
         /// <summary>
-        /// Temporary : only to test multi-agents class
+        /// Environment
         /// </summary>
-        [ObsoleteAttribute("This property is temporary, only for test. Will be replaced by the real environment.", false)] 
         private Stadium _environment;
 
         public Brain Brain { get => _brain; }
