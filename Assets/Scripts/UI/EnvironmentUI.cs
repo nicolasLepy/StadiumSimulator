@@ -55,12 +55,7 @@ public class EnvironmentUI : MonoBehaviour
         {
             texts.Add("Cat " + i + " : " + Environment.GetInstance().environment.AvailableSeats(i));
         }
-    
-        foreach (Transform child in _panelSeats.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
+        
         foreach (string m in texts)
         {
             GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
@@ -70,6 +65,14 @@ public class EnvironmentUI : MonoBehaviour
         }
     }
 
+    private void ClearPanel()
+    {
+        foreach (Transform child in _panelSeats.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+    }
     private void ListStats()
     {
 
@@ -116,7 +119,8 @@ public class EnvironmentUI : MonoBehaviour
     void Update()
     {
         _updateTime++;
-        ListSeats();
+        ClearPanel();
+        //ListSeats();
         ListStats();
         if (_updateTime == _updateCycle)
             _updateTime = 0;

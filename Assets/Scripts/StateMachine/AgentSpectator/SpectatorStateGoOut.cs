@@ -13,11 +13,12 @@ namespace MultiAgentSystem
         public SpectatorStateGoOut(StateMachine stateMachine) : base(stateMachine)
         {
             _destination = (stateMachine.Agent as AgentSpectator).spawnLocation;
+            //Put in constructor for performance issue
+            this._stateMachine.Agent.Body.MoveToDestination(_destination);
         }
 
         public override void Action()
         {
-            this._stateMachine.Agent.Body.MoveToDestination(_destination);
         }
 
         public override State Next()

@@ -11,17 +11,22 @@ namespace MultiAgentSystem
     public class SpectatorSpawner : MonoBehaviour
     {
 
-        [SerializeField] private int _averageAgentsGroupByMinute;
-        [SerializeField] private int _agentGroupMin;
-        [SerializeField] private int _agentGroupMax;
-        [SerializeField] private int _spawiningDurationInSec;
-        [SerializeField] private int _ticketPercentage;
-        [SerializeField] private int _radius;
-        [SerializeField] private int _awaySpectatorPercentage;
+        [SerializeField] private int _averageAgentsGroupByMinute = 0;
+        [SerializeField] private int _agentGroupMin = 0;
+        [SerializeField] private int _agentGroupMax = 0;
+        [SerializeField] private int _spawiningDurationInSec = 0;
+        [SerializeField] private int _ticketPercentage = 0;
+        [SerializeField] private int _radius = 0;
+        [SerializeField] private int _awaySpectatorPercentage = 0;
+        [SerializeField] private bool _noRandom = false;
+        [SerializeField] private int _fixedSpawnIntervalInSec = 0;
+
+        private int _time;
 
         // Start is called before the first frame update
         void Start()
         {
+            _time = 0;
         }
 
         public void Activate()
@@ -40,8 +45,9 @@ namespace MultiAgentSystem
             //Agent arrive during 1 minutes
             for (int i = 0; i < _spawiningDurationInSec; i++)
             {
+                _time++;
                 int probAgents = (int) (60f / _averageAgentsGroupByMinute);
-                if (UnityEngine.Random.Range(0, probAgents - 1) == 0)
+                if ((!_noRandom && UnityEngine.Random.Range(0, probAgents - 1) == 0) || (_noRandom && _time == _fixedSpawnIntervalInSec))
                 {
                     int agentsToSpawn = UnityEngine.Random.Range(_agentGroupMin, _agentGroupMax);
                     for (int j = 0; j < agentsToSpawn; j++)
@@ -74,6 +80,8 @@ namespace MultiAgentSystem
                     }
                 }
 
+                if (_time == _fixedSpawnIntervalInSec)
+                    _time = 0;
                 yield return new WaitForSeconds(1f);
             }
 

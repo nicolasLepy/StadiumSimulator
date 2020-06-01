@@ -1565,12 +1565,12 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMin
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMax
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -1586,6 +1586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _awaySpectatorPercentage
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _noRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _fixedSpawnIntervalInSec
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
@@ -5362,12 +5372,12 @@ PrefabInstance:
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMin
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
       propertyPath: _agentGroupMax
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
         type: 3}
@@ -5383,6 +5393,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _awaySpectatorPercentage
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _noRandom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133457358581314257, guid: cf71a49ff21d7a046b864bc2d704a2a9,
+        type: 3}
+      propertyPath: _fixedSpawnIntervalInSec
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71a49ff21d7a046b864bc2d704a2a9, type: 3}
