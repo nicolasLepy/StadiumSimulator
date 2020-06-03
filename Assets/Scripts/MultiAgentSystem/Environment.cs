@@ -47,11 +47,6 @@ namespace MultiAgentSystem
         private Stadium _environment;
 
         public Brain Brain { get => _brain; }
-
-        /// <summary>
-        /// Get number of door of the stadium
-        /// </summary>
-        public int CategoriesNumber => _environment.CategoriesNumber;
         
         public Stadium environment => _environment;
 
