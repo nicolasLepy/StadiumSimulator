@@ -16,8 +16,7 @@ namespace MultiAgentSystem
         
         public StateTicketOfficeGiveTicket(StateMachine stateMachine, Agent agent) : base(stateMachine)
         {
-            
-            _transaction_duration = 100;
+            _transaction_duration = Environment.GetInstance().settings.timeToBuyTicket * 50; // 50 is the number of frames in 1 sec
             _agent = agent;
             AgentTicketOffice ato = _stateMachine.Agent as AgentTicketOffice;
             ato.transactionFinished = false;

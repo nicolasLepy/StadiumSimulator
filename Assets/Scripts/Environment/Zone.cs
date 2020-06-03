@@ -10,7 +10,7 @@ public class Zone : MonoBehaviour
 {
 
     [SerializeField]
-    private int _zoneNumber;
+    private int _zoneNumber = 0;
 
     public int zoneNumber => _zoneNumber;
 

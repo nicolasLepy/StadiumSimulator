@@ -16,10 +16,58 @@ namespace MultiAgentSystem
         [SerializeField] private int _agentGroupMax = 0;
         [SerializeField] private int _spawiningDurationInSec = 0;
         [SerializeField] private int _ticketPercentage = 0;
-        [SerializeField] private int _radius = 0;
-        [SerializeField] private int _awaySpectatorPercentage = 0;
+        [SerializeField] private int _radius = 15;
+        [SerializeField] private int _awaySpectatorPercentage = 20;
         [SerializeField] private bool _noRandom = false;
         [SerializeField] private int _fixedSpawnIntervalInSec = 0;
+
+        public int awaySpectatorPercentage
+        {
+            get => _awaySpectatorPercentage;
+            set => _awaySpectatorPercentage = value;
+        }
+        
+        public int radius
+        {
+            get => _radius;
+            set => _radius = value;
+        }
+
+        public int spawiningDurationInSec
+        {
+            get => _spawiningDurationInSec;
+            set => _spawiningDurationInSec = value;
+        }
+        
+        public int ticketPercentage
+        {
+            get => _ticketPercentage;
+            set => _ticketPercentage = value;
+        }
+
+        public int fixedSpawnIntervalInSec
+        {
+            get => _fixedSpawnIntervalInSec;
+            set => _fixedSpawnIntervalInSec = value;
+        }
+
+        public bool noRandom
+        {
+            get => _noRandom;
+            set => _noRandom = value;
+        }
+
+        public int agentGroupMin
+        {
+            get => _agentGroupMin;
+            set => _agentGroupMin = value;
+        }
+
+        public int agentGroupMax
+        {
+            get => _agentGroupMax;
+            set => _agentGroupMax = value;
+        }
 
         private int _time;
 
