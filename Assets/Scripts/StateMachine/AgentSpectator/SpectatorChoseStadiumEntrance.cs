@@ -21,6 +21,8 @@ namespace MultiAgentSystem
                 }
             }
 
+            Vector2 randomAddition = Random.insideUnitCircle * 20;
+            closestEntrance += new Vector3(randomAddition.x, 0, randomAddition.y);
             _stateMachine.Agent.Body.MoveToDestination(closestEntrance);
         }
 
