@@ -102,5 +102,10 @@ namespace MultiAgentSystem
                 res = _agents[_agents.Count - 1];
             return res;
         }
+
+        public int GetNumberInQueueForAgent(Agent agent)
+        {
+            return _agents.IndexOf(agent);
+        }
     }
 }

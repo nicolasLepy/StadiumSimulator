@@ -30,7 +30,7 @@ namespace MultiAgentSystem
                     agentChecked.SendMessage(agentChecked, new MessageChecked());
                     foreach (Agent a in _agent.queue.agents)
                     {
-                        _agent.SendMessage(a, new MessageSendQueuePosition(_agent.queue.GetPositionForAgent(a)));
+                        _agent.SendMessage(a, new MessageSendQueuePosition(_agent.queue.GetPositionForAgent(a), _agent.queue.GetNumberInQueueForAgent(a)));
                     }
                 }
             }

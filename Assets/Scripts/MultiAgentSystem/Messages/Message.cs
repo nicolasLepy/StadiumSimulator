@@ -137,9 +137,12 @@ namespace MultiAgentSystem
     {
         private Vector3 _position;
         public Vector3 position => _position;
-        public MessageSendQueuePosition(Vector3 position)
+        private int _numberInQueue;
+        public int numberInQueue => _numberInQueue;
+        public MessageSendQueuePosition(Vector3 position, int numberInQueue)
         {
             _position = position;
+            _numberInQueue = numberInQueue;
         }
         public MessageObject messageObject()
         {

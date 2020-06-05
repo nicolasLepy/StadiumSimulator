@@ -66,7 +66,7 @@ namespace MultiAgentSystem
                 //Envoyer la nouvelle position à tout le monde
                 foreach (Agent a in agent.queue.agents)
                 {
-                    agent.SendMessage(a,new MessageSendQueuePosition(agent.queue.GetPositionForAgent(a)));
+                    agent.SendMessage(a,new MessageSendQueuePosition(agent.queue.GetPositionForAgent(a), agent.queue.GetNumberInQueueForAgent(a)));
                 }
                 res = new StateTicketOfficeWaiting(_stateMachine);
             }

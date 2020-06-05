@@ -73,7 +73,7 @@ namespace MultiAgentSystem
                     break;
                 case MessageObject.ASK_FOR_QUEUE:
                     _queue.Add(message.Sender);
-                    MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(message.Sender));
+                    MessageType answer = new MessageSendQueuePosition(_queue.GetPositionForAgent(message.Sender), _queue.GetNumberInQueueForAgent(message.Sender));
                     SendMessage(message.Sender, answer);
                     break;
             }

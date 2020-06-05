@@ -125,7 +125,11 @@ namespace MultiAgentSystem
                 case MessageObject.GET_QUEUE_POSITION:
                     MessageSendQueuePosition msg = message.Type as MessageSendQueuePosition;
                     inQueue = true;
-                    queuePosition = msg.position + Random.insideUnitSphere*0.6f;
+                    queuePosition = msg.position;
+                    if (msg.numberInQueue > 4)
+                    {
+                        queuePosition += Random.insideUnitSphere * 0.6f;
+                    }
                     break;
                 //A ticket was given by the ticket office
                 case MessageObject.GIVE_TICKET:
