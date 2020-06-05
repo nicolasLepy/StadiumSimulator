@@ -16,8 +16,8 @@ public class Utils
     /// <returns></returns>
     public static int PseudoGaussRandom(int min, int max)
     {
-        int random1 = Random.Range(min,max);
-        int random2 = Random.Range(min,max);
+        int random1 = Random.Range(min,max+1);
+        int random2 = Random.Range(min,max+1);
         return min + Mathf.Abs(random1 - random2);
     }
     
