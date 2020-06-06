@@ -9,6 +9,7 @@ namespace MultiAgentSystem
     public class AgentSpectatorBody : AgentBody
     {
 
+        private bool _agentIsDead = false;
         private List<AgentTicketOffice> _ticketOfficeInLineOfVision;
         private List<AgentSecurity> _securityInLineOfVision;
 
@@ -42,12 +43,17 @@ namespace MultiAgentSystem
             _securityInLineOfVision = new List<AgentSecurity>();
         }
 
-        private void FixedUpdate()
+        protected override void BodyUpdate()
         {
-            if (GetComponent<NavMeshAgent>() == null)
+            if (_agentIsDead)
             {
                 transform.position = new Vector3(transform.position.x, 3, transform.position.z);
             }
+            /*
+            if (GetComponent<NavMeshAgent>() == null)
+            {
+                transform.position = new Vector3(transform.position.x, 3, transform.position.z);
+            }*/
         }
         
         private void OnTriggerEnter(Collider other){
@@ -90,6 +96,7 @@ namespace MultiAgentSystem
         
         public void Detach()
         {
+            _agentIsDead = true;
             Destroy(GetComponent<Rigidbody>());
             Destroy(GetComponent<NavMeshAgent>());
 

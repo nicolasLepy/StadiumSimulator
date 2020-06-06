@@ -7,5 +7,10 @@ namespace MultiAgentSystem
     {
         private void OnTriggerEnter(){
         }
+
+        protected override void BodyUpdate()
+        {
+            
+        }
     }
 }

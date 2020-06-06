@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using NavMeshBuilder = UnityEditor.AI.NavMeshBuilder;
@@ -10,9 +11,10 @@ using Object = System.Object;
 
 namespace MultiAgentSystem
 {
-    public class AgentBody : MonoBehaviour
+    public abstract class AgentBody : MonoBehaviour
     {
 
+        protected Rigidbody _rigidbody;
         private GameObject _gameObject;
         private Agent _agent;
 
@@ -25,12 +27,20 @@ namespace MultiAgentSystem
 
         public GameObject GameObject;
 
+        protected abstract void BodyUpdate();
+        
+        void FixedUpdate()
+        {
+            BodyUpdate();
+        }
+        
         private void Start()
         {
             _gameObject = this.gameObject;
-            
+            _rigidbody = GetComponent<Rigidbody>();
+
         }
-        
+
         /// <summary>
         /// Move the agent to a destination
         /// </summary>
