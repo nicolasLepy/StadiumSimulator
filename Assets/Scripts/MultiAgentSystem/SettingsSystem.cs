@@ -125,6 +125,81 @@ namespace MultiAgentSystem
             Environment.GetInstance().Brain.ExportData();
         }
 
+        public void OnClickScenario1()
+        {
+            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "120";
+            GameObject.Find("InputTramNorthMin").GetComponent<InputField>().text = "30";
+            GameObject.Find("InputTramNorthMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramSouthSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramSouthMin").GetComponent<InputField>().text = "30";
+            GameObject.Find("InputTramSouthMax").GetComponent<InputField>().text = "50";
+            GameObject.Find("InputTramEastSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramEastMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramEastMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramWestSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
+
+            GameObject.Find("InputFieldNorth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldSouth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
+
+        }
+
+        public void OnClickScenario2()
+        {
+            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "45";
+            GameObject.Find("InputTramNorthMin").GetComponent<InputField>().text = "40";
+            GameObject.Find("InputTramNorthMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramSouthSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramSouthMin").GetComponent<InputField>().text = "30";
+            GameObject.Find("InputTramSouthMax").GetComponent<InputField>().text = "50";
+            GameObject.Find("InputTramEastSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramEastMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramEastMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramWestSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
+
+            GameObject.Find("InputFieldNorth").GetComponent<InputField>().text = "4";
+            GameObject.Find("InputFieldSouth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
+        }
+
+        public void OnClickScenario3()
+        {
+            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "45";
+            GameObject.Find("InputTramNorthMin").GetComponent<InputField>().text = "40";
+            GameObject.Find("InputTramNorthMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramSouthSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramSouthMin").GetComponent<InputField>().text = "30";
+            GameObject.Find("InputTramSouthMax").GetComponent<InputField>().text = "50";
+            GameObject.Find("InputTramEastSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramEastMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramEastMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramWestSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
+
+            GameObject.Find("InputFieldNorth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldSouth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
+        }
     
         // Start is called before the first frame update
         void Start()
