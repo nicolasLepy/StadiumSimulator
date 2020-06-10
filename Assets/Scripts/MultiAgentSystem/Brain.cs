@@ -152,14 +152,13 @@ namespace MultiAgentSystem
         }
 
         /// <summary>
-        /// Export simulation data in csv file
+        /// Export simulation data in csv files
         /// </summary>
         public void ExportData()
         {
             var csv_queues = new StringBuilder();
             var csv_waiting = new StringBuilder();
 
-            
             foreach (var agent in _agents)
             {
                 if (agent.Value is AgentTicketOffice ato)
@@ -167,7 +166,7 @@ namespace MultiAgentSystem
                     int i = 0;
                     foreach (int nb in ato.queue.peoplesInQueue)
                     {
-                        var newLine = $"{i * 10},{ato.ToString()},{nb}";
+                        var newLine = $"{i * 10};{ato.ToString()};{nb}";
                         csv_queues.AppendLine(newLine);
                         i++;
                     }
@@ -178,7 +177,7 @@ namespace MultiAgentSystem
                         total += f;
                     }
 
-                    csv_waiting.AppendLine($"{ato.ToString()},{total / ato.times.Count}");
+                    csv_waiting.AppendLine($"{ato.ToString()};{total / ato.times.Count}");
                 }
 
                 if (agent.Value is AgentSecurity sec)
@@ -186,7 +185,7 @@ namespace MultiAgentSystem
                     int i = 0;
                     foreach (int nb in sec.queue.peoplesInQueue)
                     {
-                        var newLine = $"{i * 10},{sec.ToString()},{nb}";
+                        var newLine = $"{i * 10};{sec.ToString()};{nb}";
                         csv_queues.AppendLine(newLine);
                         i++;
                     }

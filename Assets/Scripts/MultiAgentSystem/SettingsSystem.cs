@@ -18,6 +18,11 @@ namespace MultiAgentSystem
             InputField inputValue = GameObject.Find(inputBoxName).GetComponent<InputField>();
             return int.Parse(inputValue.text);
         }
+
+        private bool GetPedestrianActivated(string pole)
+        {
+            return GameObject.Find("TogglePedestrians" + pole).GetComponent<Toggle>().isOn;
+        }
         
         private int GetAwaySpectatorsPourcentage()
         {
@@ -108,6 +113,11 @@ namespace MultiAgentSystem
             gameObject.AddComponent<MultiAgentSystem>();
 
             int ticketProportion = GetTicketProportion();
+            if (!GetPedestrianActivated("North")) GameObject.Destroy(GameObject.Find("NorthStreet"));
+            if (!GetPedestrianActivated("South")) GameObject.Destroy(GameObject.Find("SouthStreet"));
+            if (!GetPedestrianActivated("West")) GameObject.Destroy(GameObject.Find("WestStreet"));
+            if (!GetPedestrianActivated("East")) GameObject.Destroy(GameObject.Find("EastStreet"));
+            
             foreach (SpectatorSpawner sp in GameObject.FindObjectsOfType<SpectatorSpawner>())
             {
                 sp.spawiningDurationInSec = GetArrivalTime();
