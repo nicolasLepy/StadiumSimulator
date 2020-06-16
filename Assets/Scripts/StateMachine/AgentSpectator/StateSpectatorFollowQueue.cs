@@ -22,7 +22,7 @@ namespace MultiAgentSystem
         public override void Action()
         {
             Vector3 target = (_stateMachine.Agent as AgentSpectator).queuePosition;
-            this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = target;
+            this._stateMachine.Agent.Body.MoveToDestination(target);
         }
 
         public override State Next()

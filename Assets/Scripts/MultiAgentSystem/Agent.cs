@@ -40,7 +40,8 @@ namespace MultiAgentSystem {
         protected StateMachine _stateMachine;
 
 
-        public AgentBody Body { get => _body.GetComponent<AgentBody>(); }
+        private AgentBody _agentBody;
+        public AgentBody Body { get => _agentBody; }
 
         public StateMachine StateMachine { get => _stateMachine; }
 
@@ -83,6 +84,7 @@ namespace MultiAgentSystem {
             _body.AddComponent<T>();
             _body.GetComponent<T>().agent = this;
             _body.AddComponent<AgentUI>();
+            _agentBody = _body.GetComponent<AgentBody>();
         }
 
         protected abstract void CreateBody();

@@ -17,6 +17,7 @@ namespace MultiAgentSystem
         protected Rigidbody _rigidbody;
         private GameObject _gameObject;
         private Agent _agent;
+        private NavMeshAgent _navMeshAgent;
 
         public Agent agent
         {
@@ -47,7 +48,12 @@ namespace MultiAgentSystem
         /// <param name="destination">The position for the agent to go</param>
         public void MoveToDestination(Vector3 destination)
         {
-            GetComponent<NavMeshAgent>().destination = destination;
+            _navMeshAgent.destination = destination;
+        }
+
+        public void InitializeNavMesh()
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         /// <summary>

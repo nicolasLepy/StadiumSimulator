@@ -50,6 +50,10 @@ namespace MultiAgentSystem
                 //spectator.inQueue = false;
                 this._stateMachine.Agent.Body.MoveToDestination(spectator.queuePosition);
             }
+            else if(_himSelf.isChecked)
+            {
+                _stateMachine.Agent.Body.MoveToDestination(spectator.ticket.position);
+            }
             //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
         }
 

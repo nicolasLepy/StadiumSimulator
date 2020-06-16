@@ -79,6 +79,7 @@ namespace MultiAgentSystem
         protected override void CreateBody()
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
+            Body.InitializeNavMesh();
             _spawnLocation = _body.transform.position;
         }
         

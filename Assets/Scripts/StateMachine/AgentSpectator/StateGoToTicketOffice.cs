@@ -59,7 +59,7 @@ namespace MultiAgentSystem
         {
             //UnityEngine.Vector3 ato = (_stateMachine.Agent as AgentSpectator).ClosestTicketOffice().Position;
             //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = ato;
-            this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _target.Position;
+            this._stateMachine.Agent.Body.MoveToDestination(_target.Position);
         }
 
         public override State Next()
