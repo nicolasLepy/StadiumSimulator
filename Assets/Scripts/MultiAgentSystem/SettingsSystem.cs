@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,11 @@ namespace MultiAgentSystem
         private bool GetPedestrianActivated(string pole)
         {
             return GameObject.Find("TogglePedestrians" + pole).GetComponent<Toggle>().isOn;
+        }
+
+        private bool GetDontUseNavMesh()
+        {
+            return GameObject.Find("ToggleMode").GetComponent<Toggle>().isOn;
         }
         
         private int GetAwaySpectatorsPourcentage()
@@ -107,6 +113,7 @@ namespace MultiAgentSystem
             _mainCanvas.SetActive(true);
 
             Settings settings = new Settings(GetTicketTime());
+            settings.noNavMesh = GetDontUseNavMesh();
             Environment.GetInstance().CreateBrain(GetTicketsOfficesNumber(), settings);
 
             GameObject.Find("Environment").AddComponent<EnvironmentUI>();

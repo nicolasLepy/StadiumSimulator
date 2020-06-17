@@ -29,10 +29,19 @@ namespace MultiAgentSystem
         public GameObject GameObject;
 
         protected abstract void BodyUpdate();
+
+        private bool isMoving = false;
+        private Vector3 target;
         
         void FixedUpdate()
         {
             BodyUpdate();
+
+            if (isMoving)
+            {
+                float step =  9 * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, target, step);
+            }
         }
         
         private void Start()
@@ -48,9 +57,18 @@ namespace MultiAgentSystem
         /// <param name="destination">The position for the agent to go</param>
         public void MoveToDestination(Vector3 destination)
         {
-            _navMeshAgent.destination = destination;
-        }
+            if (Environment.GetInstance().settings.noNavMesh)
+            {
+                target = destination;
+                isMoving = true;
+            }
+            else
+            {
+                _navMeshAgent.destination = destination;
+            }
 
+        }
+        
         public void InitializeNavMesh()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();

@@ -17,10 +17,13 @@ namespace MultiAgentSystem
 
         public override void Action()
         {
-            if (!isMoving && spectator != null && spectator.Body.gameObject.GetComponent<NavMeshAgent>() != null)
+            if (!isMoving && spectator != null)
             {
-                isMoving = true;
-                spectator.Body.MoveToDestination(spectator.spawnLocation);
+                if (Environment.GetInstance().settings.noNavMesh || (!Environment.GetInstance().settings.noNavMesh && spectator.Body.gameObject.GetComponent<NavMeshAgent>() != null))
+                {
+                    isMoving = true;
+                    spectator.Body.MoveToDestination(spectator.spawnLocation);
+                }
             }
 
         }

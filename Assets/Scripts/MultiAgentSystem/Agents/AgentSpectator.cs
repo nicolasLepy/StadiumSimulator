@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.MultiAgentSystem;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace MultiAgentSystem
@@ -81,6 +82,9 @@ namespace MultiAgentSystem
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
             Body.InitializeNavMesh();
+            if (Environment.GetInstance().settings.noNavMesh)
+                GameObject.Destroy(_body.GetComponent<NavMeshAgent>());
+
         }
         
 

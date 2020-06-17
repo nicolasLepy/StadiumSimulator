@@ -80,6 +80,7 @@ namespace MultiAgentSystem {
         {
             _body = Resources.Load("Prefabs/" + prefabName, typeof(GameObject)) as GameObject;
             _body = GameObject.Instantiate(_body, new Vector3(0, 0, 0), _body.transform.rotation);
+            
             _body.transform.name = _name + "Body";
             _body.AddComponent<T>();
             _body.GetComponent<T>().agent = this;

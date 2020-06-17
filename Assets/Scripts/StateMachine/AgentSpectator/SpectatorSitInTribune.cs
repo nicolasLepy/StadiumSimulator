@@ -23,7 +23,7 @@ namespace MultiAgentSystem
             _destination = spectator.ticket.position;
             //_destination = Environment.GetInstance().environment.CategoryPosition(spectator.ticket.door) + Random.insideUnitSphere * 3;
             //_destination = new Vector3(250,3,-117);
-            this._stateMachine.Agent.Body.MoveToDestination(_destination);
+            this._stateMachine.Agent.Body.MoveToDestination(new Vector3(_destination.x, 2, _destination.z));
         }
 
         public override void Action()
