@@ -22,6 +22,11 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKey(KeyCode.E))
+        {
+            Environment.GetInstance().Brain.ReactivateAllAgents();
+        }
+        
         if (Input.GetKey(KeyCode.Space))
         {
             Camera.main.transform.localPosition += new Vector3(0, 0.3f, 0);

@@ -107,11 +107,11 @@ namespace MultiAgentSystem
             _agentIsDead = false;
             _rigidbody = gameObject.AddComponent<Rigidbody>();
             _rigidbody.mass = 1;
-            NavMeshAgent nma = gameObject.AddComponent<NavMeshAgent>();
-            nma.speed = 9;
-            nma.angularSpeed = 120;
-            nma.acceleration = 5;
-            nma.autoBraking = true;
+            _navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+            _navMeshAgent.speed = 9;
+            _navMeshAgent.angularSpeed = 120;
+            _navMeshAgent.acceleration = 5;
+            _navMeshAgent.autoBraking = true;
         }
 
     }

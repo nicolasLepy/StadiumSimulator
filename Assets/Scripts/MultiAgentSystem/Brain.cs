@@ -105,10 +105,7 @@ namespace MultiAgentSystem
         /// </summary>
         public void Loop()
         {
-            foreach(KeyValuePair<Guid,Agent> a in _agents)
-            {
-                a.Value.StateMachine.Action();
-            }
+            
 
             //Kill agents
             foreach (Agent a in _askedForASuicide)
@@ -151,6 +148,10 @@ namespace MultiAgentSystem
             }
             _askedForReactivation.Clear();
 
+            foreach(KeyValuePair<Guid,Agent> a in _agents)
+            {
+                a.Value.StateMachine.Action();
+            }
             
             //Every ten seconds
             if (Time.frameCount % 500 == 0)
@@ -182,6 +183,7 @@ namespace MultiAgentSystem
             _agents.Add(newAgent.AgentId, newAgent);
             newAgent.Subscribe(_provider);
             newAgent.Body.transform.position = position;
+            
             newAgent.CreateStateMachine();
             return newAgent;
         }
@@ -201,6 +203,12 @@ namespace MultiAgentSystem
             _askedForASuicide.Add(a);
         }
 
+        public void ReactivateAllAgents()
+        {
+            foreach(var a in _deactivatedAgents)
+                a.Value.Reactivate();
+        }
+        
         /// <summary>
         /// Export simulation data in csv files
         /// </summary>

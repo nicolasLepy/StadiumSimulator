@@ -185,8 +185,6 @@ namespace MultiAgentSystem {
             Environment.GetInstance().Brain.AgentCommitSuicide(this);
             (Body as AgentSpectatorBody)?.Detach();
 
-
-
         }
     }
 

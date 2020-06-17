@@ -17,7 +17,7 @@ namespace MultiAgentSystem
         protected Rigidbody _rigidbody;
         private GameObject _gameObject;
         private Agent _agent;
-        private NavMeshAgent _navMeshAgent;
+        protected NavMeshAgent _navMeshAgent;
 
         public Agent agent
         {

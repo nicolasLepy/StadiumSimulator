@@ -67,6 +67,7 @@ namespace MultiAgentSystem
 
         public override void CreateStateMachine()
         {
+            _spawnLocation = _body.transform.position;
             _stateMachine = new SpectatorStateMachine(this);
         }
         
@@ -80,7 +81,6 @@ namespace MultiAgentSystem
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
             Body.InitializeNavMesh();
-            _spawnLocation = _body.transform.position;
         }
         
 
