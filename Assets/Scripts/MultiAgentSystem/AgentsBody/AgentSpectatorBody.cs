@@ -102,5 +102,17 @@ namespace MultiAgentSystem
 
         }
 
+        public void Reattach()
+        {
+            _agentIsDead = false;
+            _rigidbody = gameObject.AddComponent<Rigidbody>();
+            _rigidbody.mass = 1;
+            NavMeshAgent nma = gameObject.AddComponent<NavMeshAgent>();
+            nma.speed = 9;
+            nma.angularSpeed = 120;
+            nma.acceleration = 5;
+            nma.autoBraking = true;
+        }
+
     }
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
 
 namespace MultiAgentSystem
 {
@@ -30,6 +31,12 @@ namespace MultiAgentSystem
 
         private List<Agent> _askedForASuicide;
 
+        private List<Agent> _askedForDeactivation;
+
+        private List<Agent> _askedForReactivation;
+
+        private Dictionary<Guid,Agent> _deactivatedAgents;
+
         /// <summary>
         /// "Mail box" for all agents who wants send a message to other agents
         /// Messages are treated every loop in the simulation (~30-50 time / sec)
@@ -53,8 +60,11 @@ namespace MultiAgentSystem
         {
             _timesToSitInStadium = new List<float>();
             _askedForASuicide = new List<Agent>();
+            _askedForDeactivation = new List<Agent>();
+            _askedForReactivation = new List<Agent>();
             _messages = new List<Message>();
             _agents = new Dictionary<Guid,Agent>();
+            _deactivatedAgents = new Dictionary<Guid, Agent>();
             _provider = new MessageTracker();
             
             //North ticket offices
@@ -100,6 +110,7 @@ namespace MultiAgentSystem
                 a.Value.StateMachine.Action();
             }
 
+            //Kill agents
             foreach (Agent a in _askedForASuicide)
             {
                 Guid agent;
@@ -112,6 +123,35 @@ namespace MultiAgentSystem
             }
             _askedForASuicide.Clear();
 
+            //Deactivate agents
+            foreach (Agent a in _askedForDeactivation)
+            {
+                Guid agent;
+                foreach (KeyValuePair<Guid, Agent> kvp in _agents)
+                {
+                    if (kvp.Value == a) agent = kvp.Key;
+                }
+                Agent agentToRemove = _agents[agent];
+                _deactivatedAgents.Add(agent, agentToRemove);
+                _agents.Remove(agent);
+            }
+            _askedForDeactivation.Clear();
+            
+            //Reactivate agent
+            foreach (Agent a in _askedForReactivation)
+            {
+                Guid agent;
+                foreach (KeyValuePair<Guid, Agent> kvp in _deactivatedAgents)
+                {
+                    if (kvp.Value == a) agent = kvp.Key;
+                }
+
+                _agents.Add(agent, _deactivatedAgents[agent]);
+                _deactivatedAgents.Remove(agent);
+            }
+            _askedForReactivation.Clear();
+
+            
             //Every ten seconds
             if (Time.frameCount % 500 == 0)
             {
@@ -144,6 +184,16 @@ namespace MultiAgentSystem
             newAgent.Body.transform.position = position;
             newAgent.CreateStateMachine();
             return newAgent;
+        }
+
+        public void AgentAskForDeactivation(Agent a)
+        {
+            _askedForDeactivation.Add(a);
+        }
+
+        public void AgentAskForReactivation(Agent a)
+        {
+            _askedForReactivation.Add(a);
         }
 
         public void AgentCommitSuicide(Agent a)

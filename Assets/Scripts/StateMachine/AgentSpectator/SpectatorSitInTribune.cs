@@ -29,8 +29,7 @@ namespace MultiAgentSystem
             if (dist < 3f)
             {
                 Environment.GetInstance().Brain.timesToSitInStadium.Add(Time.time - (_stateMachine.Agent as AgentSpectator).SpawnTime);
-                Debug.Log("Suicide");
-                _stateMachine.Agent.CommitSuicide();
+                _stateMachine.Agent.Deactivate();
             }
         }
 

@@ -156,10 +156,34 @@ namespace MultiAgentSystem {
 
         }
 
+        /// <summary>
+        /// Deactivate an agent : the agent will be active anymore, but not destroyed (his state is saved)
+        /// </summary>
+        public void Deactivate()
+        {
+            Debug.Log("Deactivated");
+            Environment.GetInstance().Brain.AgentAskForDeactivation(this);
+            (Body as AgentSpectatorBody)?.Detach();
+        }
+
+        /// <summary>
+        /// Reactivate an agent : the agent will be reactivated from the state he has been deactivated
+        /// </summary>
+        public void Reactivate()
+        {
+            Debug.Log("Reactivated");
+            Environment.GetInstance().Brain.AgentAskForReactivation(this);
+            (Body as AgentSpectatorBody)?.Reattach();
+        }
+        
+        /// <summary>
+        /// Agent commit a suicide : it will be removed from the simulation
+        /// </summary>
         public void CommitSuicide()
         {
+            Debug.Log("Suicide");
             Environment.GetInstance().Brain.AgentCommitSuicide(this);
-            (Body as AgentSpectatorBody).Detach();
+            (Body as AgentSpectatorBody)?.Detach();
 
 
 
