@@ -25,10 +25,10 @@ This project aims to simulate the crowd population in a stadium using multi-agen
 | **Work Package 3** | **Half-time** |
 | *Waiting for WP1 & WP2 completion* |  |
 | **Work Package 4** | **End of the game** |
-| *Waiting for WP1 & WP2 completion* |  |
+| Exit stadium | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
 | **Work Package 5** | **User interface** |
-| Create UI elements | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
-| Export data | ![#ffa500](https://placehold.it/15/ffa500/000000?text=+) In progress |
+| Create UI elements | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
+| Export data | ![#008000](https://placehold.it/15/008000/000000?text=+) OK |
 | **Work Package 6** | **Integration** |
 | *Waiting for WP1 & WP2 completion* |  |
 
