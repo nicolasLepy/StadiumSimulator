@@ -196,7 +196,9 @@ MonoBehaviour:
     Down : Backspace
 
     Follow
-    agent : Select an agent and F'
+    agent : Select an agent and F
+
+    Quit stadium : Press E'
 --- !u!222 &22890856
 CanvasRenderer:
   m_ObjectHideFlags: 0
