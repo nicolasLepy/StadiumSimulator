@@ -148,7 +148,7 @@ namespace MultiAgentSystem
             GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
             GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
             GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
-            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
 
@@ -173,7 +173,7 @@ namespace MultiAgentSystem
             GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
             GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
             GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
-            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
 
@@ -185,7 +185,7 @@ namespace MultiAgentSystem
 
         public void OnClickScenario3()
         {
-            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "45";
+            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "40";
             GameObject.Find("InputTramNorthMin").GetComponent<InputField>().text = "40";
             GameObject.Find("InputTramNorthMax").GetComponent<InputField>().text = "60";
             GameObject.Find("InputTramSouthSec").GetComponent<InputField>().text = "180";
@@ -198,7 +198,7 @@ namespace MultiAgentSystem
             GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
             GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
             GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
-            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
             GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
 
