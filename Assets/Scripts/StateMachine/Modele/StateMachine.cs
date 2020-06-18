@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MultiAgentSystem
+﻿namespace MultiAgentSystem
 {
     public abstract class StateMachine
     {
-
         protected State _current;
         public State current => _current;
 

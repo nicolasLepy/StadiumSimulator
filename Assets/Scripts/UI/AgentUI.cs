@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MultiAgentSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,12 +13,10 @@ public class AgentUI : MonoBehaviour
     private Text _txtLivesSince;
     private Text _txtCurrentState;
     private GameObject _panelMessages;
-
     
     // Start is called before the first frame update
     void Start()
     {
-        
         agent = GetComponent<AgentBody>()?.agent;
         _txtAgentName = GameObject.Find("TxtAgentName").GetComponent<Text>();
         _txtAgentGuid = GameObject.Find("TxtAgentGuid").GetComponent<Text>();
@@ -29,13 +25,7 @@ public class AgentUI : MonoBehaviour
         _txtCurrentState = GameObject.Find("TxtCurrentState").GetComponent<Text>();
         _panelMessages = GameObject.Find("PanelMessages");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void ListMessages()
     {
         List<string> messages = new List<string>();
@@ -50,8 +40,6 @@ public class AgentUI : MonoBehaviour
             Destroy(child.gameObject);
         }
         
-        
-        
         messages.Reverse();
         int i = 0;
         foreach (string m in messages)
@@ -60,7 +48,7 @@ public class AgentUI : MonoBehaviour
             if (i < 10)
             {
                 GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
-                txt = GameObject.Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
+                txt = Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
                 txt.GetComponent<Text>().text = m;
                 txt.transform.SetParent(_panelMessages.transform);
             }

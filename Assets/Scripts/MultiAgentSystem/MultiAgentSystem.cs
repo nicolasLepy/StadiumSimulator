@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace MultiAgentSystem
@@ -9,8 +8,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class MultiAgentSystem : MonoBehaviour
     {
-
-
         // Start is called before the first frame update
         void Awake()
         {
@@ -28,6 +25,5 @@ namespace MultiAgentSystem
         {
             Environment.GetInstance().Brain.Loop();
         }
-
     }
 }

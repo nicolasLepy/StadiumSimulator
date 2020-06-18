@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using MultiAgentSystem;
+﻿using MultiAgentSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MoveCamera : MonoBehaviour
 {
-
-
     private bool _fpsView;
     private Vector3 _oldPosition;
 
@@ -21,7 +17,6 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKey(KeyCode.E))
         {
             Environment.GetInstance().Brain.ReactivateAllAgents();

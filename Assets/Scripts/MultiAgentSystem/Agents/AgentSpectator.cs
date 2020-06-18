@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.MultiAgentSystem;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -16,7 +11,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class AgentSpectator : Agent
     {
-        
         public float timeEnterTicketOfficeQueue { get; set; }
 
         private Vector3 _spawnLocation;
@@ -76,18 +70,15 @@ namespace MultiAgentSystem
         public AgentSpectator() : this("AgentSpectator_" + ++nameCounter) {
             
         }
-
-
+        
         protected override void CreateBody()
         {
             CreateBody<AgentSpectatorBody>("SpectatorBody");
             Body.InitializeNavMesh();
             if (Environment.GetInstance().settings.noNavMesh)
                 GameObject.Destroy(_body.GetComponent<NavMeshAgent>());
-
         }
         
-
         /// <summary>
         /// Temp : il faut gérer le champ de vision de l'agent
         /// </summary>
@@ -156,13 +147,8 @@ namespace MultiAgentSystem
                 case MessageObject.CHECKED:
                     _isChecked = true;
                     break;
-                    
             }
-            
             archivedMailbox.Add(message);
-            
-            
-            
         }
     }
 }

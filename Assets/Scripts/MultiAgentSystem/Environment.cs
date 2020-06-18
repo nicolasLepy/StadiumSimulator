@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace MultiAgentSystem
 {
@@ -11,7 +8,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class Environment
     {
-
         #region SingletonManagement
         private static Environment _instance = null;
         private Environment() {
@@ -49,8 +45,5 @@ namespace MultiAgentSystem
         public Brain Brain { get => _brain; }
         
         public Stadium environment => _environment;
-
     }
-
-
 }

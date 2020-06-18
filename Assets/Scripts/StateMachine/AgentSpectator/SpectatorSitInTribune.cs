@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Assertions.Must;
+﻿using UnityEngine;
 
 namespace MultiAgentSystem
 {
@@ -10,7 +7,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class SpectatorSitInTribune : State
     {
-
         private int isSit;
         
         private Vector3 _destination;
@@ -21,15 +17,12 @@ namespace MultiAgentSystem
             //First step : chose security agent the less busied
             AgentSpectator spectator = _stateMachine.Agent as AgentSpectator;
             _destination = spectator.ticket.position;
-            //_destination = Environment.GetInstance().environment.CategoryPosition(spectator.ticket.door) + Random.insideUnitSphere * 3;
-            //_destination = new Vector3(250,3,-117);
-            this._stateMachine.Agent.Body.MoveToDestination(new Vector3(_destination.x, 2, _destination.z));
+            _stateMachine.Agent.Body.MoveToDestination(new Vector3(_destination.x, 2, _destination.z));
         }
 
         public override void Action()
         {
             float dist = Vector3.Distance(_stateMachine.Agent.Position, _destination);
-            //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
             if (dist < 3f)
             {
                 Environment.GetInstance().Brain.timesToSitInStadium.Add(Time.time - (_stateMachine.Agent as AgentSpectator).SpawnTime);

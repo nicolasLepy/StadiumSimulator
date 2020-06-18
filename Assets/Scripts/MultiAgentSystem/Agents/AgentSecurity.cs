@@ -1,20 +1,16 @@
-﻿using System.Xml.Serialization;
-using AgentSecurity;
+﻿using AgentSecurity;
 using UnityEngine;
 
 namespace MultiAgentSystem
 {
     public class AgentSecurity : Agent
     {
-
         private Queue _queue;
 
         /// <summary>
         /// Queue in front of the agent security
         /// </summary>
         public Queue queue => _queue;
-        
-        
         
         /// <summary>
         /// Create an agent security
@@ -54,7 +50,6 @@ namespace MultiAgentSystem
                     break;
             }
             archivedMailbox.Add(message);
-
         }
     }
 }

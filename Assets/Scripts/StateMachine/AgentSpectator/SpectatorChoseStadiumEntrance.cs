@@ -40,10 +40,9 @@ namespace MultiAgentSystem
             // WARNING : Use trigger to collect ticket office inside the trigger instead access directly the environment   
             if (agentBody.ticketOfficeInLineOfVision.Count>0 && agentBody.GetClosestTicketOfficeDistance() < 50)
             {
-                if ((agent.ticket != null)) res = new SpectatorStateEnterStadium(_stateMachine);
+                if (agent.ticket != null) res = new SpectatorStateEnterStadium(_stateMachine);
                 else res = new StateGoToTicketOffice(_stateMachine);
             }
-
             return res;
         }
     }

@@ -59,6 +59,5 @@ namespace MultiAgentSystem
             }
             _observers.Clear();
         }
-        
     }
 }

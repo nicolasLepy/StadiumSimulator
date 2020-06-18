@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
@@ -31,15 +30,8 @@ namespace MultiAgentSystem
                     minAgents = agents;
                 }
             }
-
             _target = selectedSecurity;
             _stateMachine.Agent.SendMessage(_target, new MessageAskForQueue());
-
-            
-            //AgentSpectator spectator = _stateMachine.Agent as AgentSpectator;
-            //spectator.SendMessage(selectedSecurity,new MessageAskForQueue());
-            //_destination = Environment.GetInstance().environment.CategoryPosition(spectator.ticket.door) + Random.insideUnitSphere * 3;
-            //_destination = new Vector3(250,3,-117);
         }
 
         public override void Action()
@@ -47,14 +39,12 @@ namespace MultiAgentSystem
             AgentSpectator spectator = _stateMachine.Agent as AgentSpectator;
             if (spectator.inQueue)
             {
-                //spectator.inQueue = false;
-                this._stateMachine.Agent.Body.MoveToDestination(spectator.queuePosition);
+                _stateMachine.Agent.Body.MoveToDestination(spectator.queuePosition);
             }
             else if(_himSelf.isChecked)
             {
                 _stateMachine.Agent.Body.MoveToDestination(spectator.ticket.position);
             }
-            //this._stateMachine.Agent.Body.GetComponent<NavMeshAgent>().destination = _destination;
         }
 
         public override State Next()

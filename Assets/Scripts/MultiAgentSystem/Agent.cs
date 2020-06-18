@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using Assets.Scripts.MultiAgentSystem;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace MultiAgentSystem { 
-
+namespace MultiAgentSystem 
+{
     /// <summary>
     /// Represents an agent
     /// </summary>
     public abstract class Agent : ISimulationClock, IObserver<Message>
     {
-
         private IDisposable unsubscriber;
 
         private Guid _agentId;
@@ -38,8 +34,7 @@ namespace MultiAgentSystem {
         /// Behaviour state machine of the agent
         /// </summary>
         protected StateMachine _stateMachine;
-
-
+        
         private AgentBody _agentBody;
         public AgentBody Body { get => _agentBody; }
 
@@ -55,9 +50,7 @@ namespace MultiAgentSystem {
         protected List<Message> _archivedMailbox;
 
         public List<Message> archivedMailbox => _archivedMailbox;
-
-
-
+        
         /// <summary>
         /// Create an agent
         /// </summary>
@@ -70,8 +63,7 @@ namespace MultiAgentSystem {
             _agentId = Guid.NewGuid();
             CreateBody();
         }
-
-
+        
         /// <summary>
         /// Create physical body of the agent
         /// </summary>
@@ -90,7 +82,6 @@ namespace MultiAgentSystem {
 
         protected abstract void CreateBody();
         
-
         /// <summary>
         /// Send a message to another agent
         /// </summary>
@@ -154,7 +145,6 @@ namespace MultiAgentSystem {
             {
                 ProcessMessage(value);
             }
-
         }
 
         /// <summary>
@@ -185,8 +175,6 @@ namespace MultiAgentSystem {
             Debug.Log("Suicide");
             Environment.GetInstance().Brain.AgentCommitSuicide(this);
             (Body as AgentSpectatorBody)?.Detach();
-
         }
     }
-
 }

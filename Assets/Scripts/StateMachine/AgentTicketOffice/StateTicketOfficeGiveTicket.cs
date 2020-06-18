@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace MultiAgentSystem
 {
@@ -9,7 +7,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class StateTicketOfficeGiveTicket : State
     {
-
         private int _transaction_duration;
         private int time = 0;
         private Agent _agent;
@@ -21,8 +18,7 @@ namespace MultiAgentSystem
             AgentTicketOffice ato = _stateMachine.Agent as AgentTicketOffice;
             ato.transactionFinished = false;
         }
-        
-        
+
         public override void Action()
         {
             time++;
@@ -36,14 +32,12 @@ namespace MultiAgentSystem
                 {
                     agent.SendMessage(agent.queue.Pop(), new MessageGiveTicket(ticket));
                     agent.transactionFinished = true;
-                    //agent.SendMessage(agent.askForTicket.Sender, new MessageGiveTicket());
                 }
                 else
                 {
                     List<int> availableCategories =
                         Environment.GetInstance().environment.StillAvailableCategories((agent.queue.First() as AgentSpectator).side);
                     agent.SendMessage(agent.queue.First(), new MessageNoTicketAvailable(availableCategories,(agent.askForTicket.Type as MessageAskForTicket).door));
-                    //agent.SendMessage(agent.askForTicket.Sender, new MessageNoTicketAvailable());
                     //No seat available, the transaction is finished
                     if (availableCategories.Count == 0)
                     {
@@ -51,10 +45,7 @@ namespace MultiAgentSystem
                         agent.transactionFinished = true;
                     }
                 }
-            
-                
             }
-
         }
 
         public override State Next()

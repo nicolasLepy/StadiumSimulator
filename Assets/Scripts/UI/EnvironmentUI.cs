@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MultiAgentSystem;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;
 
 public class EnvironmentUI : MonoBehaviour
 {
-    
-    
     private GameObject _panelSeats;
 
     private float _avgInstallationTime;
@@ -23,7 +19,6 @@ public class EnvironmentUI : MonoBehaviour
         _updateTime = 0;
         _ticketOfficesTimes = new Dictionary<AgentTicketOffice, float>();
 
-
         foreach (var a in Environment.GetInstance().Brain.Agents)
         {
             AgentTicketOffice ato = a.Value as AgentTicketOffice;
@@ -32,37 +27,16 @@ public class EnvironmentUI : MonoBehaviour
                 _ticketOfficesTimes.Add(ato, 0);
             }
         }
-
-
+        
         _panelSeats = GameObject.Find("RightPanel");
-
     }
 
     private void AddText(string content)
     {
         GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
-        txt = GameObject.Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
+        txt = Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
         txt.GetComponent<Text>().text = content;
         txt.transform.SetParent(_panelSeats.transform);
-
-    }
-    
-    private void ListSeats()
-    {
-        List<string> texts = new List<string>();
-
-        for (int i = 1; i <= Environment.GetInstance().environment.CategoriesNumber; i++)
-        {
-            texts.Add("Cat " + i + " : " + Environment.GetInstance().environment.AvailableSeats(i));
-        }
-        
-        foreach (string m in texts)
-        {
-            GameObject txt = Resources.Load("Prefabs/UI/UITextRegular", typeof(GameObject)) as GameObject;
-            txt = GameObject.Instantiate(txt, new Vector3(0, 0, 0), txt.transform.rotation);
-            txt.GetComponent<Text>().text = m;
-            txt.transform.SetParent(_panelSeats.transform);
-        }
     }
 
     private void ClearPanel()
@@ -71,11 +45,9 @@ public class EnvironmentUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
     }
     private void ListStats()
     {
-
         if (_updateTime == _updateCycle)
         {
             foreach (var a in Environment.GetInstance().Brain.Agents)
@@ -98,8 +70,6 @@ public class EnvironmentUI : MonoBehaviour
                 }
             }
 
-            
-            
             _avgInstallationTime = 0f;
             List<float> times = Environment.GetInstance().Brain.timesToSitInStadium;
             foreach (float f in times)
@@ -120,7 +90,6 @@ public class EnvironmentUI : MonoBehaviour
     {
         _updateTime++;
         ClearPanel();
-        //ListSeats();
         ListStats();
         if (_updateTime == _updateCycle)
             _updateTime = 0;

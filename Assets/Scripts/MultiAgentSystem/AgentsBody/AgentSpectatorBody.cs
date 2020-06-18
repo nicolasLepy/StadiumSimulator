@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MultiAgentSystem;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +6,6 @@ namespace MultiAgentSystem
 {
     public class AgentSpectatorBody : AgentBody
     {
-
         private bool _agentIsDead = false;
         private List<AgentTicketOffice> _ticketOfficeInLineOfVision;
         private List<AgentSecurity> _securityInLineOfVision;
@@ -33,7 +30,6 @@ namespace MultiAgentSystem
                     minDistance = distance;
                 }
             }
-
             return minDistance == -1 ? 1000 : minDistance;
         }
         
@@ -49,11 +45,6 @@ namespace MultiAgentSystem
             {
                 transform.position = new Vector3(transform.position.x, 3, transform.position.z);
             }
-            /*
-            if (GetComponent<NavMeshAgent>() == null)
-            {
-                transform.position = new Vector3(transform.position.x, 3, transform.position.z);
-            }*/
         }
         
         private void OnTriggerEnter(Collider other){
@@ -66,15 +57,6 @@ namespace MultiAgentSystem
             {
                 _securityInLineOfVision.Add(other.transform.GetComponent<AgentBody>().agent as AgentSecurity);
             }
-            /*if (other.tag == "Counter")
-            {
-                AgentSpectator spec = agent as AgentSpectator;
-                if (!spec.inQueue && !spec.ticket)
-                {
-                    Agent ticketOffice = other.transform.parent.GetComponent<AgentBody>().agent;
-                    //agent.SendMessage(ticketOffice, new MessageAskForQueue());
-                }
-            }*/
         }
 
         private void OnTriggerExit(Collider other)
@@ -91,7 +73,6 @@ namespace MultiAgentSystem
                 if (_securityInLineOfVision.Contains(exited))
                     _securityInLineOfVision.Remove(exited);
             }
-
         }
         
         public void Detach()
@@ -99,7 +80,6 @@ namespace MultiAgentSystem
             _agentIsDead = true;
             Destroy(GetComponent<Rigidbody>());
             Destroy(GetComponent<NavMeshAgent>());
-
         }
 
         public void Reattach()
@@ -117,6 +97,5 @@ namespace MultiAgentSystem
                 _navMeshAgent.autoBraking = true;
             }
         }
-
     }
 }

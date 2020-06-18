@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security;
-using UnityEditor.UIElements;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +7,8 @@ namespace MultiAgentSystem
 
     public class SettingsSystem : MonoBehaviour
     {
-
         private GameObject _mainCanvas;
-
-
+        
         private int GetInputValue(string inputBoxName)
         {
             InputField inputValue = GameObject.Find(inputBoxName).GetComponent<InputField>();
@@ -66,7 +61,6 @@ namespace MultiAgentSystem
             return res;
         }
 
-
         private void CreateTramLocation(string poleIndication, Vector3 position)
         {
             if (GameObject.Find("ToggleTram" + poleIndication).GetComponent<Toggle>().isOn)
@@ -86,7 +80,6 @@ namespace MultiAgentSystem
                 sp.GetComponent<SpectatorSpawner>().awaySpectatorPercentage = GetAwaySpectatorsPourcentage();
                 sp.GetComponent<SpectatorSpawner>().Activate();
             }
-   
         }
         private void CreateTramSpawner()
         {
@@ -105,7 +98,6 @@ namespace MultiAgentSystem
             position = GameObject.Find("StadiumEntranceEast").transform.position;
             position = new Vector3(position.x, position.y, position.z+150);
             CreateTramLocation("East",position);
-            
         }
         
         public void OnClickButtonStartSimulation()
@@ -134,7 +126,6 @@ namespace MultiAgentSystem
             }
             CreateTramSpawner();
             GameObject.Find("CanvasSettings").SetActive(false);
-
         }
 
         public void OnClickExportData()
@@ -165,7 +156,6 @@ namespace MultiAgentSystem
             GameObject.Find("InputFieldSouth").GetComponent<InputField>().text = "2";
             GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
             GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
-
         }
 
         public void OnClickScenario2()
@@ -224,13 +214,5 @@ namespace MultiAgentSystem
             _mainCanvas = GameObject.Find("CanvasMain");
             _mainCanvas.SetActive(false);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
-
-    
 }

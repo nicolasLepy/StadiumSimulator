@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using Environment = MultiAgentSystem.Environment;
 
 public class Zone : MonoBehaviour
 {
-
     [SerializeField]
     private int _zoneNumber = 0;
 
@@ -46,12 +42,6 @@ public class Zone : MonoBehaviour
         endX = max.x;
         endZ = max.z;
 
-        /*
-        startX = transform.position.x - (transform.localScale.x/2);
-        startZ = transform.position.z - (transform.localScale.z/2);
-        endX = transform.position.x + (transform.localScale.x/2);
-        endZ = transform.position.z + (transform.localScale.z/2);*/
-        
         int stepXNumber = (int)(Math.Abs(startX - endX) / 4.0f);
         int stepZNumber = (int)(Math.Abs(startZ - endZ) / 4.0f);
         float stepX = Math.Abs(startX - endX)/(stepXNumber + 0.0f);

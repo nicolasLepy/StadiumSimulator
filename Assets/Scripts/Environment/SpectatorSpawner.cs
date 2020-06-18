@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using MultiAgentSystem;
+﻿using System.Collections;
 using UnityEngine;
-using Environment = MultiAgentSystem.Environment;
 
 namespace MultiAgentSystem
 {
@@ -81,13 +77,7 @@ namespace MultiAgentSystem
         {
             StartCoroutine(CoroutineSpawnAgent());
         }
-
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-
-        }
-
+        
         IEnumerator CoroutineSpawnAgent()
         {
             //Agent arrive during 1 minutes
@@ -104,8 +94,7 @@ namespace MultiAgentSystem
                         float z = UnityEngine.Random.Range(-_radius, _radius) + transform.position.z;
                         AgentSpectator spawnedAgent = (AgentSpectator) Environment.GetInstance().Brain
                             .SpawnAgent<AgentSpectator>(new Vector3(x, 5, z));
-                       
-                        
+
                         if (UnityEngine.Random.Range(1, 100) <= _awaySpectatorPercentage)
                         {
                             spawnedAgent.side = Team.AWAY;
@@ -124,15 +113,12 @@ namespace MultiAgentSystem
                             if(t!=null)
                                 spawnedAgent.ticket = t;
                         }
-
                     }
                 }
-
                 if (_time == _fixedSpawnIntervalInSec)
                     _time = 0;
                 yield return new WaitForSeconds(1f);
             }
-
             print("Spectators don't come anymore");
             yield return new WaitForSeconds(1f);
             print("Coroutine finished.");

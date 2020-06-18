@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Util class to store things
 /// </summary>
 public class Utils
 {
-
     /// <summary>
     /// Generate a pseudo-gaussien random
     /// </summary>
@@ -20,5 +17,4 @@ public class Utils
         int random2 = Random.Range(min,max+1);
         return min + Mathf.Abs(random1 - random2);
     }
-    
 }

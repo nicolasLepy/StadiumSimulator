@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
@@ -22,7 +21,7 @@ namespace MultiAgentSystem
         public override void Action()
         {
             Vector3 target = (_stateMachine.Agent as AgentSpectator).queuePosition;
-            this._stateMachine.Agent.Body.MoveToDestination(target);
+            _stateMachine.Agent.Body.MoveToDestination(target);
         }
 
         public override State Next()
@@ -48,7 +47,6 @@ namespace MultiAgentSystem
                         Debug.Log("new try");
                         int askForDoor =
                             agent.ticketRefused.stillAvailableCategories[Random.Range(0, agent.ticketRefused.stillAvailableCategories.Count - 1)]; // ILLEGAL : if between there a no ticket in this category
-                        //askForDoor = Utils.PseudoGaussRandom(1,  Environment.GetInstance().CategoriesNumber);
                         agent.SendMessage(_ticketOffice,new MessageAskForTicket(askForDoor)); 
                         _askedForTicket = true;
                     }
@@ -59,7 +57,6 @@ namespace MultiAgentSystem
             {
                 _askedForTicket = false;
                 agent.notifiedTicketRefused = false;
-                //res = this;  //new SpectatorStateGoOut(_stateMachine);
             }
             
             if (agent.ticket != null)

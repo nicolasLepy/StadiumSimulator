@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MultiAgentSystem
 {
-
     /// <summary>
     /// Message structure
     /// </summary>
@@ -103,7 +99,6 @@ namespace MultiAgentSystem
 
         public MessageNoTicketAvailable(List<int> stillAvailableCategories, int askedDoor)
         {
-
             this.askedDoor = askedDoor;
             _stillAvailableCategories = stillAvailableCategories;
         }
@@ -150,12 +145,8 @@ namespace MultiAgentSystem
         }
     }
     
-
-    
     public class MessageUnknownException : Exception
     {
         internal MessageUnknownException(){}
     }
-
-    
 }

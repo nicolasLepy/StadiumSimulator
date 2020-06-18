@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace MultiAgentSystem
 {
@@ -13,8 +8,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class AgentTicketOffice : Agent
     {
-        
-        
         public Message askForTicket { get; set; }
         public bool receivedAskForTicket { get; set; }
         
@@ -59,7 +52,6 @@ namespace MultiAgentSystem
         protected override void CreateBody()
         {
             CreateBody<AgentTicketOfficeBody>("TicketOfficeBody");
-            
         }
 
         public override void ProcessMessage(Message message)

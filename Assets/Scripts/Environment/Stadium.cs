@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace MultiAgentSystem
@@ -8,7 +6,6 @@ namespace MultiAgentSystem
 
     public class Ticket
     {
-
         private int _door;
         public int door => _door;
         private Vector3 _position;
@@ -28,7 +25,6 @@ namespace MultiAgentSystem
     
     public class Stadium
     {
-
         private Dictionary<int, Team> _sideByCategories;
         private Dictionary<int, int> _seatsByDoor;
         private Dictionary<int, Vector3> _categoriesPosition;
@@ -44,14 +40,12 @@ namespace MultiAgentSystem
             _categoriesPlaces.Add(category, places);
             _seatsByDoor[category] = places.Count;
         }
-        
-        
+
         private int _categoriesNumber;
         public int CategoriesNumber => _categoriesNumber;
 
         public Stadium(int zonesNumber)
         {
-            
             _categoriesNumber = zonesNumber;
             _seatsByDoor = new Dictionary<int, int>();
             _sideByCategories = new Dictionary<int, Team>();
@@ -117,8 +111,5 @@ namespace MultiAgentSystem
             }
             return res;
         }
-        
-        
     }
-
 }

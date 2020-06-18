@@ -1,12 +1,9 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
     public class SpectatorExitStadium : State
     {
-
         private AgentSpectator spectator;
         private bool isMoving;
         public SpectatorExitStadium(StateMachine stateMachine) : base(stateMachine)
@@ -25,7 +22,6 @@ namespace MultiAgentSystem
                     spectator.Body.MoveToDestination(spectator.spawnLocation);
                 }
             }
-
         }
 
         public override State Next()

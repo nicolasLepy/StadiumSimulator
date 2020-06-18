@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 namespace MultiAgentSystem
 {
@@ -14,7 +13,7 @@ namespace MultiAgentSystem
         {
             _destination = (stateMachine.Agent as AgentSpectator).spawnLocation;
             //Put in constructor for performance issue
-            this._stateMachine.Agent.Body.MoveToDestination(_destination);
+            _stateMachine.Agent.Body.MoveToDestination(_destination);
         }
 
         public override void Action()

@@ -8,7 +8,6 @@ namespace MultiAgentSystem
     /// </summary>
     public class Unsubscriber : IDisposable
     {
-        
         private List<IObserver<Message>> _observers;
         private IObserver<Message> _observer;
 

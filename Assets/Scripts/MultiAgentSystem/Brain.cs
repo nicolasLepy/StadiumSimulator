@@ -1,12 +1,8 @@
 ﻿using System;
-using Assets.Scripts.MultiAgentSystem;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 
 namespace MultiAgentSystem
 {
@@ -75,14 +71,7 @@ namespace MultiAgentSystem
             SpawnTicketsOffices(GameObject.Find("WestTicketOfficeSpawner"), ticketsOffices[2]);
             //East ticket offices
             SpawnTicketsOffices(GameObject.Find("EastTicketOfficeSpawner"), ticketsOffices[3]);
-
-            /*
-            foreach (GameObject ticketOfficeSpawner in GameObject.FindGameObjectsWithTag("TicketOfficeSpawner"))
-            {
-                Agent ato = SpawnAgent<AgentTicketOffice>(ticketOfficeSpawner.transform.position);
-                ato.Body.gameObject.transform.rotation = ticketOfficeSpawner.transform.rotation;
-            }*/
-
+            
             foreach (GameObject securitySpawner in GameObject.FindGameObjectsWithTag("SecuritySpawner"))
             {
                 Agent ags = SpawnAgent<AgentSecurity>(securitySpawner.transform.position);
@@ -97,7 +86,6 @@ namespace MultiAgentSystem
         public void AddMessage(Message message)
         {
             _provider.TrackMessage(message);
-            //_messages.Add(message);
         }
 
         /// <summary>
@@ -105,8 +93,6 @@ namespace MultiAgentSystem
         /// </summary>
         public void Loop()
         {
-            
-
             //Kill agents
             foreach (Agent a in _askedForASuicide)
             {
@@ -170,7 +156,6 @@ namespace MultiAgentSystem
                     }
                 }
             }
-
         }
 
         /// <summary>
@@ -255,13 +240,10 @@ namespace MultiAgentSystem
             {
                 csv_sit.AppendLine($"{f}");
             }
-
-
+            
             File.WriteAllText("data_queues.csv",csv_queues.ToString());
             File.WriteAllText("data_sit.csv",csv_sit.ToString());
             File.WriteAllText("data_waiting.csv",csv_waiting.ToString());
-
         }
     }
-
 }

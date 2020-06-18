@@ -1,12 +1,9 @@
-﻿using System;
-using MultiAgentSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MultiAgentSystem
 {
     public class SecurityCheckTickets : State
     {
-        
         private int _checkingTime;
         private int _currentTime;
         private AgentSecurity _agent;
@@ -15,7 +12,6 @@ namespace MultiAgentSystem
             _checkingTime = 60;
             _currentTime = 0;
             _agent = _stateMachine.Agent as AgentSecurity;
-
         }
 
         public override void Action()
