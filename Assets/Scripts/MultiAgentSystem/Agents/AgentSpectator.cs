@@ -76,7 +76,11 @@ namespace MultiAgentSystem
             CreateBody<AgentSpectatorBody>("SpectatorBody");
             Body.InitializeNavMesh();
             if (Environment.GetInstance().settings.noNavMesh)
+            {
                 GameObject.Destroy(_body.GetComponent<NavMeshAgent>());
+                _body.GetComponent<Rigidbody>().useGravity = false;
+
+            }
         }
         
         /// <summary>

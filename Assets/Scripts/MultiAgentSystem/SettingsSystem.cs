@@ -207,6 +207,39 @@ namespace MultiAgentSystem
             GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
             GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
         }
+        
+        public void OnClickScenarioPresentation()
+        {
+            
+            GameObject.Find("InputSpectatorTime").GetComponent<InputField>().text = "20";
+
+            GameObject.Find("InputTramNorthSec").GetComponent<InputField>().text = "8";
+            GameObject.Find("InputTramNorthMin").GetComponent<InputField>().text = "40";
+            GameObject.Find("InputTramNorthMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramSouthSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramSouthMin").GetComponent<InputField>().text = "30";
+            GameObject.Find("InputTramSouthMax").GetComponent<InputField>().text = "50";
+            GameObject.Find("InputTramEastSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramEastMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramEastMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("InputTramWestSec").GetComponent<InputField>().text = "180";
+            GameObject.Find("InputTramWestMin").GetComponent<InputField>().text = "25";
+            GameObject.Find("InputTramWestMax").GetComponent<InputField>().text = "60";
+            GameObject.Find("ToggleTramNorth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("ToggleTramSouth").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("ToggleTramEast").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("ToggleTramWest").GetComponent<Toggle>().isOn = false;
+            
+            GameObject.Find("TogglePedestriansNorth").GetComponent<Toggle>().isOn = true;
+            GameObject.Find("TogglePedestriansSouth").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("TogglePedestriansWest").GetComponent<Toggle>().isOn = false;
+            GameObject.Find("TogglePedestriansEast").GetComponent<Toggle>().isOn = false;
+
+            GameObject.Find("InputFieldNorth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldSouth").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldWest").GetComponent<InputField>().text = "2";
+            GameObject.Find("InputFieldEast").GetComponent<InputField>().text = "2";
+        }
     
         // Start is called before the first frame update
         void Start()
